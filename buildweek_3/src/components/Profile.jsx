@@ -1,11 +1,15 @@
 import { Container, Row, Col } from 'react-bootstrap'
-import Navbar from './NavBar'
+import NavBarL from './NavBar'
+import Formazione from './Formazione'
 const Profile = function () {
   return (
     <Container>
-      <Navbar/>
-      <Row>
-        <Col xs={12} md={8}></Col>
+      <NavBarL/>
+      
+      <Row className="mt-5">
+        <Col xs={12} md={8}>
+        <Formazione/>
+        </Col>
         <Col xs={12} md={4}></Col>
       </Row>
     </Container>
