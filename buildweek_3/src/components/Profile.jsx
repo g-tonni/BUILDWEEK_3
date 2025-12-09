@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap'
+import Sidebar from './Sidebar'
 
 const Profile = function () {
   return (
