@@ -9,7 +9,7 @@ import Interessi from './Interessi'
 const Profile = function () {
   return (
     <Container>
-      <Row style={{ marginTop: '5em' }}>
+      <Row>
         <Col xs={12} md={8}>
           <HeroSection />
           <Analisi />
