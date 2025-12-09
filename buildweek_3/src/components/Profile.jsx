@@ -17,7 +17,7 @@ const Profile = function () {
           <Attivita />
           <Interessi />
         </Col>
-        <Col xs={12} md={4}>
+        <Col xs={12} md={4} className="mt-3">
           <Sidebar />
         </Col>
       </Row>
