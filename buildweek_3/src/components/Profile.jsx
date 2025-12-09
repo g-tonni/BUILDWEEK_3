@@ -4,20 +4,26 @@ import Sidebar from "./Sidebar";
 import Attivita from "./Attivita";
 import Analisi from "./Analisi";
 import Competenze from "./Competenze";
-import ConsigliatiCarousel from "./ConsigliatiCarousel";
+import Interessi from "./Interessi";
+import Formazione from "./Formazione";
+import Esperienza from "./Esperienza";
 
 const Profile = function () {
   return (
     <Container>
-      <Row style={{ marginTop: "5em" }}>
+      <Row>
         <Col xs={12} md={8}>
           <HeroSection />
           <ConsigliatiCarousel />
           <Analisi />
-          <Competenze />
           <Attivita />
+          <Esperienza />
+          <Competenze />
+          <Interessi />
+          <Formazione />
         </Col>
-        <Col xs={12} md={4}>
+
+        <Col xs={12} md={4} className="mt-3">
           <Sidebar />
         </Col>
       </Row>

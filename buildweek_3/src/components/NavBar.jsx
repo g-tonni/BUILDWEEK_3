@@ -13,7 +13,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const NavBarL = () => {
   const [profile, setProfile] = useState({ name: "", image: "" });
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand bg-white border-bottom shadow-sm fixed-top">
-      <div className="container-fluid d-flex justify-content-between align-items-center">
+      <div className="container d-flex justify-content-between align-items-center">
         {/* Sinistra */}
         <div className="d-flex align-items-center gap-3">
           <img
@@ -148,4 +148,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBarL;
