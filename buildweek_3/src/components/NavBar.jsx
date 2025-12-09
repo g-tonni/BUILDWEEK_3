@@ -13,7 +13,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const NavBarL = () => {
   const [profile, setProfile] = useState({ name: "", image: "" });
 
   useEffect(() => {
@@ -121,4 +121,4 @@ const handleHomeClick = () => {
   );
 };
 
-export default Navbar;
+export default NavBarL;
