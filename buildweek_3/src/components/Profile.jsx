@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import Attivita from './Attivita'
 import Analisi from './Analisi'
 import Competenze from './Competenze'
+import Interessi from './Interessi'
 
 const Profile = function () {
   return (
@@ -13,7 +14,8 @@ const Profile = function () {
           <HeroSection />
           <Analisi />
           <Competenze />
-          <Attività />
+          <Attivita />
+          <Interessi />
         </Col>
         <Col xs={12} md={4}>
           <Sidebar />
