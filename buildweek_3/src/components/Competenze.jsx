@@ -1,6 +1,7 @@
 import { Card, Row, Col } from "react-bootstrap";
 const Competenze = () => {
   return (
+    
     <Card className="mt-3">
       <Row className="align-items-center mb-3">
         <Col >
