@@ -1,0 +1,11 @@
+.border-dashed {
+    border-style: dashed !important;
+}
+
+.backGround {
+    background-image: url("https://placebear.com/800/400");
+    background-size: cover;
+    background-position: center;
+    min-height: 200px;
+    border-radius: 10px;
+}
