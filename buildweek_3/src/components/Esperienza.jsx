@@ -22,7 +22,7 @@ const Esperienza = ()=>{
   />
 
   <div className="ms-3">
-    <h6 className="mt-2 mb-1">Assistente sociale</h6>
+    <h6 className="mt-2 mb-2">Assistente sociale</h6>
     <p className="text-muted m-0">Asilo Nido La Tartaruga</p>
   </div>
 </Col>
