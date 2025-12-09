@@ -1,14 +1,15 @@
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col } from 'react-bootstrap'
 
 function ProfileRecommendationss() {
   return (
     <Row className="g-3">
       <Col md={12}>
         <Card
-          className="h-100 p-3"
-          style={{ backgroundColor: "#f5f5f5", color: "#333" }}>
+          className="h-100 p-3 bg-white border"
+          style={{ backgroundColor: '#f5f5f5', color: '#333' }}
+        >
           <Card.Body>
-            <div style={{ fontSize: "40px", marginBottom: "10px" }}></div>
+            <div style={{ fontSize: '40px', marginBottom: '10px' }}></div>
             <Card.Title>
               Aggiungi una foto al tuo profilo per aiutare gli altri a
               riconoscerti
@@ -24,6 +25,6 @@ function ProfileRecommendationss() {
         </Card>
       </Col>
     </Row>
-  );
+  )
 }
-export default ProfileRecommendationss;
+export default ProfileRecommendationss

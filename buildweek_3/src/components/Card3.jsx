@@ -1,14 +1,12 @@
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col } from 'react-bootstrap'
 
 function ProfileRecommendations3() {
   return (
     <Row className="g-3">
       <Col md={12}>
-        <Card
-          className="h-100 p-3"
-          style={{ backgroundColor: "#f5f5f5", color: "#333" }}>
+        <Card className="h-100 p-3 bg-white border" style={{ color: '#333' }}>
           <Card.Body>
-            <div style={{ fontSize: "40px", marginBottom: "10px" }}></div>
+            <div style={{ fontSize: '40px', marginBottom: '10px' }}></div>
             <Card.Title>
               Scrivi un riepilogo per mettere in evidenza la tua personalità o
               la tua esperienza lavorativa
@@ -24,6 +22,6 @@ function ProfileRecommendations3() {
         </Card>
       </Col>
     </Row>
-  );
+  )
 }
-export default ProfileRecommendations3;
+export default ProfileRecommendations3

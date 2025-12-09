@@ -1,7 +1,7 @@
-import Carousel from "react-bootstrap/Carousel";
-import ProfileRecommendations from "./Card";
-import ProfileRecommendationss from "./Card2";
-import ProfileRecommendations3 from "./Card3";
+import Carousel from 'react-bootstrap/Carousel'
+import ProfileRecommendations from './Card'
+import ProfileRecommendationss from './Card2'
+import ProfileRecommendations3 from './Card3'
 
 function ConsigliatiCarousel() {
   return (
@@ -21,7 +21,7 @@ function ConsigliatiCarousel() {
         </Carousel.Item>
       </Carousel>
     </>
-  );
+  )
 }
 
-export default ConsigliatiCarousel;
+export default ConsigliatiCarousel
