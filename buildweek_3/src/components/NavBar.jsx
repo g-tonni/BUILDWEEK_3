@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import React, { useEffect, useState } from "react";
-import { Dropdown } from 'react-bootstrap';
-import '../css/NavBar.css'
+import { Dropdown } from "react-bootstrap";
+import "../css/NavBar.css";
 import {
   FaSearch,
   FaHome,
@@ -17,14 +17,14 @@ const Navbar = () => {
   const [profile, setProfile] = useState({ name: "", image: "" });
 
   useEffect(() => {
-    setProfile({ });
+    setProfile({});
   }, []);
 
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const handleHomeClick = () => {
-  navigate("/");
-};
+  const handleHomeClick = () => {
+    navigate("/");
+  };
 
   return (
     <nav className="navbar navbar-expand bg-white border-bottom shadow-sm fixed-top">
@@ -51,35 +51,47 @@ const handleHomeClick = () => {
 
         {/* Destra */}
         <ul className="navbar-nav d-flex flex-row align-items-center gap-4">
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
-            <a className="nav-link d-flex flex-column align-items-center" onClick={handleHomeClick}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: "pointer" }}>
+            <a
+              className="nav-link d-flex flex-column align-items-center"
+              onClick={handleHomeClick}>
               <FaHome size={20} />
               <div className="small">Home</div>
             </a>
           </li>
 
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: "pointer" }}>
             <a className="nav-link d-flex flex-column align-items-center">
               <FaUserFriends size={20} />
               <div className="small">My Network</div>
             </a>
           </li>
 
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: "pointer" }}>
             <a className="nav-link d-flex flex-column align-items-center">
               <FaBriefcase size={20} />
               <div className="small">Jobs</div>
             </a>
           </li>
 
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: "pointer" }}>
             <a className="nav-link d-flex flex-column align-items-center">
               <FaRegCommentDots size={20} />
               <div className="small">Messaging</div>
             </a>
           </li>
 
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: "pointer" }}>
             <a className="nav-link d-flex flex-column align-items-center">
               <FaBell size={20} />
               <div className="small">Notifications</div>
@@ -89,13 +101,12 @@ const handleHomeClick = () => {
           {/* Profile Dropdown */}
           <li className="nav-item d-flex flex-column align-items-center hover-icon">
             <Dropdown align="end">
-              <Dropdown.Toggle 
-                variant="link" 
+              <Dropdown.Toggle
+                variant="link"
                 id="profileDropdown"
-                className="nav-link d-flex flex-row align-items-center text-decoration-none p-0"
-              >
+                className="nav-link d-flex flex-row align-items-center text-decoration-none p-0">
                 <img
-                  src='https://placebear.com/50/50'                     //{profile.image}
+                  src="https://placebear.com/50/50" //{profile.image}
                   alt="profile"
                   className="rounded-circle me-2"
                   style={{ width: "30px", height: "30px" }}
@@ -104,14 +115,30 @@ const handleHomeClick = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#" className="dropdown-hover">Account</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Impostazioni e privacy</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Guida</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Lingua</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Gestisci</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Post e attività</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Account per la pubblicazione di offerte di lavoro</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Esci</Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Account
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Impostazioni e privacy
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Guida
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Lingua
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Gestisci
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Post e attività
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Account per la pubblicazione di offerte di lavoro
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Esci
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </li>
