@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import Attivita from './Attivita'
 import Analisi from './Analisi'
 import Competenze from './Competenze'
+import Interessi from './Interessi'
 
 const Profile = function () {
   return (
