@@ -1,9 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Profile from './components/Profile'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Profile from './components/Profile';
+import { BrowserRouter } from "react-router-dom";
 
 
 function App() {
-  return <Profile />
+  return (
+    <BrowserRouter>
+      <Profile />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
