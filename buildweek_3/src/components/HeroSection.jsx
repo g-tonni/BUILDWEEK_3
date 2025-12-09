@@ -1,13 +1,14 @@
-import { Button, Container, Row, Col, Image } from "react-bootstrap"
+import { Button, Container, Row, Col, Image, Carousel, Card } from "react-bootstrap"
 import { LuPencil } from "react-icons/lu"
 import { PiBuildingsDuotone } from "react-icons/pi"
 import { BiSolidBadgeCheck } from "react-icons/bi"
 import { FaPlus } from "react-icons/fa6"
+import { Link } from "react-router-dom"
 
 const HeroSection = function () {
     return (
 
-        <Container className="my-3 border rounded-3 border-secondary">
+        <Container className="my-3 border rounded-3 bg-white">
             <Row>
                 <Col xs={12} className="backGround position-relative">
                     {/* sfondo copertina in bg */}
@@ -73,16 +74,75 @@ const HeroSection = function () {
                             </Button>
                         </Col>
                     </Row>
-
-
-
-
-
-
                 </Col>
-            </Row>
+                <Row>
+                    <Col xs={12}>
+                        <Carousel indicators={false} controls={true} className="my-3">
 
-        </Container>
+                            <Carousel.Item>
+                                <Row>
+                                    <Col xs={6}>
+                                        <Card className="bg-light rounded-3 border shadow-sm mx-auto  h-100">
+                                            <Card.Body>
+
+                                                <Card.Text>
+                                                    <p className="mb-2 ">
+                                                        <span className="fw-semibold">Mostra ai recruiter che sei disponibile a lavorare:</span>
+                                                        Sei tu che decidi chi può vedere questa informazione.</p>
+                                                </Card.Text>
+                                                <Card.Link href="#">Inizia</Card.Link>
+
+                                            </Card.Body>
+                                        </Card>
+
+                                    </Col>
+
+                                    <Col xs={6}>
+                                        <Card className="bg-light rounded-3 border shadow-sm mx-auto  h-100">
+                                            <Card.Body>
+
+                                                <Card.Text>
+                                                    <p className="mb-2"><span className="fw-semibold">Fai sapere che stai facendo selezione</span> e attrai candidati qualificati.</p>
+                                                </Card.Text>
+                                                <Card.Link href="#">Inizia</Card.Link>
+
+                                            </Card.Body>
+                                        </Card>
+
+                                    </Col>
+
+                                </Row>
+
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <Row>
+                                    <Col xs={6}>
+                                        <Card className="bg-light rounded-3 border shadow-sm mx-auto  h-100">
+                                            <Card.Body>
+
+                                                <Card.Text>
+                                                    <p className="mb-2"><span className="fw-semibold">Metti in risalto i tuoi servizi</span>
+                                                        <br /> in un'apposita sezione del tuo profilo, così sarà più facile trovarti.</p>
+                                                </Card.Text>
+                                                <Card.Link href="#">Inizia</Card.Link>
+
+                                            </Card.Body>
+                                        </Card>
+
+                                    </Col>
+                                </Row>
+                            </Carousel.Item>
+                        </Carousel>
+                    </Col>
+
+
+
+
+                </Row>
+            </Row >
+
+
+        </Container >
 
 
 
