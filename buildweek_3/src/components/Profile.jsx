@@ -13,7 +13,7 @@ const Profile = function () {
           <HeroSection />
           <Analisi />
           <Competenze />
-          <Attività />
+          <Attivita />
         </Col>
         <Col xs={12} md={4}>
           <Sidebar />
