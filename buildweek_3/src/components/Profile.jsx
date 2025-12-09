@@ -6,6 +6,7 @@ import Analisi from './Analisi'
 import Competenze from './Competenze'
 import Interessi from './Interessi'
 import Formazione from './Formazione'
+import Esperienza from './Esperienza'
 
 const Profile = function () {
   return (
@@ -14,11 +15,13 @@ const Profile = function () {
         <Col xs={12} md={8}>
           <HeroSection />
           <Analisi />
-          <Competenze />
           <Attivita />
+          <Esperienza />
+          <Competenze />
           <Interessi />
           <Formazione />
         </Col>
+
         <Col xs={12} md={4} className="mt-3">
           <Sidebar />
         </Col>
