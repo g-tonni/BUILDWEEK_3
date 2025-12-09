@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
-import React, { useEffect, useState } from "react";
-import { Dropdown } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
+import { Dropdown } from 'react-bootstrap'
 import '../css/NavBar.css'
 import {
   FaSearch,
@@ -9,32 +9,32 @@ import {
   FaBriefcase,
   FaRegCommentDots,
   FaBell,
-} from "react-icons/fa";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
+} from 'react-icons/fa'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { useNavigate } from 'react-router-dom'
 
 const NavBarL = () => {
-  const [profile, setProfile] = useState({ name: "", image: "" });
+  const [profile, setProfile] = useState({ name: '', image: '' })
 
   useEffect(() => {
-    setProfile({ });
-  }, []);
+    setProfile({})
+  }, [])
 
- const navigate = useNavigate();
+  const navigate = useNavigate()
 
-const handleHomeClick = () => {
-  navigate("/");
-};
+  const handleHomeClick = () => {
+    navigate('/')
+  }
 
   return (
     <nav className="navbar navbar-expand bg-white border-bottom shadow-sm fixed-top">
-      <div className="container-fluid d-flex justify-content-between align-items-center">
+      <div className="container d-flex justify-content-between align-items-center">
         {/* Sinistra */}
         <div className="d-flex align-items-center gap-3">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
             alt="LinkedIn Logo"
-            style={{ width: "40px", height: "40px", cursor: "pointer" }}
+            style={{ width: '40px', height: '40px', cursor: 'pointer' }}
             onClick={handleHomeClick}
           />
 
@@ -44,42 +44,60 @@ const handleHomeClick = () => {
               type="text"
               placeholder="Search"
               className="form-control border-0 bg-light ms-2 p-0"
-              style={{ boxShadow: "none" }}
+              style={{ boxShadow: 'none' }}
             />
           </div>
         </div>
 
         {/* Destra */}
         <ul className="navbar-nav d-flex flex-row align-items-center gap-4">
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
-            <a className="nav-link d-flex flex-column align-items-center" onClick={handleHomeClick}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: 'pointer' }}
+          >
+            <a
+              className="nav-link d-flex flex-column align-items-center"
+              onClick={handleHomeClick}
+            >
               <FaHome size={20} />
               <div className="small">Home</div>
             </a>
           </li>
 
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: 'pointer' }}
+          >
             <a className="nav-link d-flex flex-column align-items-center">
               <FaUserFriends size={20} />
               <div className="small">My Network</div>
             </a>
           </li>
 
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: 'pointer' }}
+          >
             <a className="nav-link d-flex flex-column align-items-center">
               <FaBriefcase size={20} />
               <div className="small">Jobs</div>
             </a>
           </li>
 
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: 'pointer' }}
+          >
             <a className="nav-link d-flex flex-column align-items-center">
               <FaRegCommentDots size={20} />
               <div className="small">Messaging</div>
             </a>
           </li>
 
-          <li className="nav-item d-flex flex-column align-items-center hover-icon" style={{ cursor: "pointer" }}>
+          <li
+            className="nav-item d-flex flex-column align-items-center hover-icon"
+            style={{ cursor: 'pointer' }}
+          >
             <a className="nav-link d-flex flex-column align-items-center">
               <FaBell size={20} />
               <div className="small">Notifications</div>
@@ -89,36 +107,52 @@ const handleHomeClick = () => {
           {/* Profile Dropdown */}
           <li className="nav-item d-flex flex-column align-items-center hover-icon">
             <Dropdown align="end">
-              <Dropdown.Toggle 
-                variant="link" 
+              <Dropdown.Toggle
+                variant="link"
                 id="profileDropdown"
                 className="nav-link d-flex flex-row align-items-center text-decoration-none p-0"
               >
                 <img
-                  src='https://placebear.com/50/50'                     //{profile.image}
+                  src="https://placebear.com/50/50" //{profile.image}
                   alt="profile"
                   className="rounded-circle me-2"
-                  style={{ width: "30px", height: "30px" }}
+                  style={{ width: '30px', height: '30px' }}
                 />
                 <div className="small text-dark">Tu</div>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#" className="dropdown-hover">Account</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Impostazioni e privacy</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Guida</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Lingua</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Gestisci</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Post e attività</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Account per la pubblicazione di offerte di lavoro</Dropdown.Item>
-                <Dropdown.Item href="#" className="dropdown-hover">Esci</Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Account
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Impostazioni e privacy
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Guida
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Lingua
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Gestisci
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Post e attività
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Account per la pubblicazione di offerte di lavoro
+                </Dropdown.Item>
+                <Dropdown.Item href="#" className="dropdown-hover">
+                  Esci
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </li>
         </ul>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default NavBarL;
+export default NavBarL
