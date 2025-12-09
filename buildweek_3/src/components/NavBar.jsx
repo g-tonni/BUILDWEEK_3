@@ -11,14 +11,10 @@ import {
   FaBell,
 } from 'react-icons/fa'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const NavBarL = () => {
-  const [profile, setProfile] = useState({ name: '', image: '' })
 
-  useEffect(() => {
-    setProfile({})
-  }, [])
 
   const navigate = useNavigate()
 
@@ -112,17 +108,17 @@ const NavBarL = () => {
                 id="profileDropdown"
                 className="nav-link d-flex flex-row align-items-center text-decoration-none p-0"
               >
-                <img
+                <Link to="/profile/me"><img
                   src="https://placebear.com/50/50" //{profile.image}
                   alt="profile"
                   className="rounded-circle me-2"
                   style={{ width: '30px', height: '30px' }}
-                />
+                /></Link>
                 <div className="small text-dark">Tu</div>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#" className="dropdown-hover">
+                <Dropdown.Item as={Link} to="/profile/me" className="dropdown-hover">
                   Account
                 </Dropdown.Item>
                 <Dropdown.Item href="#" className="dropdown-hover">

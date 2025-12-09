@@ -3,10 +3,10 @@ import { Row, Col } from 'react-bootstrap'
 const SidebarProfile = function ({ children, image, name, des, line }) {
   return (
     <Row className=" mt-3 px-3">
-      <Col xs={2} className="p-0 pe-3">
+      <Col xs={3} md={4} xl={2} className="p-0 pe-3">
         <img src={image} alt="Profilo" className="w-100 rounded-circle" />
       </Col>
-      <Col xs={10} className="p-0">
+      <Col xs={9} md={8} xl={10} className="p-0">
         <p className="fw-bold mb-1" style={{ fontSize: '18px' }}>
           {name}
         </p>
