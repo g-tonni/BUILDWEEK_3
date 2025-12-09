@@ -1,4 +1,22 @@
+<<<<<<< Updated upstream
 import { Card, Row, Col } from 'react-bootstrap'
+=======
+import { Card, Row, Col, Button } from "react-bootstrap";
+const Attivita = () => {
+    return (
+          <Card className="mt-3">
+      <Row className="align-items-center mb-3">
+        <Col >
+        <div className="d-flex align-items-center justify-content-between mt-3  mx-4">
+  <h4 className="mb-0">Attività</h4>
+  <div className="d-flex align-items-center gap-3">
+      <Button variant="outline-primary" className="rounded-pill fw-medium  w-100">
+                               Crea un post
+                            </Button>
+    <i className="bi bi-pen"></i>
+  </div>
+</div>
+>>>>>>> Stashed changes
 
 const Attivita = () => {
   return (
