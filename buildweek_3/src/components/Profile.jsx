@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap'
+<<<<<<< Updated upstream
 import HeroSection from "./HeroSection"
 
 import Sidebar from './Sidebar'
@@ -18,6 +19,22 @@ const Profile = function () {
         </Col>
         <Col xs={12} md={4}>
           <Sidebar />
+=======
+import Navbar from './NavBar'
+import Analisi from './Analisi'
+import Competenze from './Competenze'
+import Attivita from './Attivita'
+const Profile = function () {
+  return (
+    <Container>
+      <Navbar />
+      <Row>
+        <Col xs={12} md={8}>
+        
+          <Analisi />
+          <Competenze />
+          <Attivita/>
+>>>>>>> Stashed changes
         </Col>
       </Row>
 
