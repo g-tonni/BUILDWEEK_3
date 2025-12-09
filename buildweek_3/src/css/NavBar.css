@@ -1,0 +1,10 @@
+.hover-icon:hover img {
+filter: brightness(0.8);
+}
+.hover-icon:hover {
+color: #000 !important;
+}
+.dropdown-hover:hover {
+text-decoration: underline;
+background-color: #f8f9fa;
+}

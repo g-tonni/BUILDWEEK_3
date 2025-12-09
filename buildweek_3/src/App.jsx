@@ -1,12 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Profile from './components/Profile'
-import Footer from './components/Footer'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Profile />
-    </>
+    </BrowserRouter>
   )
 }
 
