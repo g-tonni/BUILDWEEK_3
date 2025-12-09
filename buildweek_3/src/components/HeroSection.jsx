@@ -20,7 +20,7 @@ const HeroSection = function () {
                             className="shadow"
                         />
                         <FaPlus
-                            className="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 border"
+                            className="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 border border-1 border-primary text-primary"
                             size={24}
                         />
                     </div>
@@ -36,7 +36,7 @@ const HeroSection = function () {
                 <Row className="align-items-center">
                     <Col xs={9} className="d-flex flex-wrap justify-content-between">
                         <h4>Nome Cognome</h4>
-                        <Button variant="outline-primary" className="rounded-pill fs-6 fw-medium border-primary border-dashed">
+                        <Button variant="outline-primary" className="rounded-pill fs-6 fw-medium border-primary border-dashed w-100">
                             <BiSolidBadgeCheck />  Aggiungi badge di verifica
                         </Button>
                     </Col>
@@ -53,18 +53,19 @@ const HeroSection = function () {
                 </Row>
                 <Col xs={12} className="my-3">
                     <Row className="g-3">
-                        <Col xs={3} lg={3}>
-                            <Button variant="primary" className="rounded-pill fw-medium">
+                        <Col xs={3} md={12} lg={3}>
+                            <Button variant="primary" className="rounded-pill fw-medium w-100">
                                 Disponibile per
                             </Button>
                         </Col>
                         <Col xs={6} lg={3}>
-                            <Button variant="outline-primary" className="rounded-pill fw-medium ">
-                                Aggiungi sezione del profilo
+                            <Button variant="outline-primary" className="rounded-pill fw-medium w-100">
+                                Aggiungi sezione
                             </Button>
                         </Col>
                         <Col xs={3} lg={3}>
-                            <Button variant="outline-secondary" className="rounded-pill border-secondary fw-medium ">
+                            <Button variant="outline-secondary" className="rounded-pill border-secondary fw-medium w-100 ">
+
                                 Risorse
                             </Button>
                         </Col>
@@ -90,7 +91,7 @@ const HeroSection = function () {
                                                         <span className="fw-semibold">Mostra ai recruiter che sei disponibile a lavorare:</span>
                                                         Sei tu che decidi chi può vedere questa informazione.</p>
                                                 </Card.Text>
-                                                <Card.Link href="#">Inizia</Card.Link>
+                                                <Card.Link href="#" className="text-decoration-none">Inizia</Card.Link>
 
                                             </Card.Body>
                                         </Card>
@@ -104,7 +105,7 @@ const HeroSection = function () {
                                                 <Card.Text>
                                                     <p className="mb-2"><span className="fw-semibold">Fai sapere che stai facendo selezione</span> e attrai candidati qualificati.</p>
                                                 </Card.Text>
-                                                <Card.Link href="#">Inizia</Card.Link>
+                                                <Card.Link href="#" className="text-decoration-none">Inizia</Card.Link>
 
                                             </Card.Body>
                                         </Card>
@@ -124,7 +125,7 @@ const HeroSection = function () {
                                                     <p className="mb-2"><span className="fw-semibold">Metti in risalto i tuoi servizi</span>
                                                         <br /> in un'apposita sezione del tuo profilo, così sarà più facile trovarti.</p>
                                                 </Card.Text>
-                                                <Card.Link href="#">Inizia</Card.Link>
+                                                <Card.Link href="#" className="text-decoration-none">Inizia</Card.Link>
 
                                             </Card.Body>
                                         </Card>
