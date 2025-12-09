@@ -50,7 +50,7 @@ const Sidebar = function () {
     <>
       <SidebarContainer title="Altri profili per te" subtitle="No">
         {sez1.map((profilo) => {
-          return (< SidebarProfile
+          return (< SidebarProfile key={profilo._id}
             des={profilo.title}
             name={`${profilo.name} ${profilo.surname} `}
             image={profilo.image}
@@ -70,7 +70,7 @@ const Sidebar = function () {
         des="Dalla scuola o università di Sara"
       >
         {sez2.map((profilo) => {
-          return (< SidebarProfile
+          return (< SidebarProfile key={profilo._id}
             des={profilo.title}
             name={`${profilo.name} ${profilo.surname} `}
             image={profilo.image}
