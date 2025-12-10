@@ -102,9 +102,9 @@ const Esperienza = () => {
       .then((res) => {
         if (res.ok) {
           alert("Esperienza Postata")
-          getExperience(
-            handleClose()
-          )
+          getExperience()
+          handleClose()
+
         } else {
           throw new Error('errore')
         }
