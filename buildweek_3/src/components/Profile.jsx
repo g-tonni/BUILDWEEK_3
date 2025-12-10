@@ -5,7 +5,6 @@ import Attivita from './Attivita'
 import Analisi from './Analisi'
 import Competenze from './Competenze'
 import Interessi from './Interessi'
-import Formazione from './Formazione'
 
 const Profile = function () {
   return (
@@ -17,7 +16,6 @@ const Profile = function () {
           <Competenze />
           <Attivita />
           <Interessi />
-          <Formazione />
         </Col>
         <Col xs={12} md={4} className="mt-3">
           <Sidebar />
