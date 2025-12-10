@@ -8,11 +8,12 @@ import {
     Card,
     Alert,
 } from 'react-bootstrap'
+import { IoPersonAddSharp } from "react-icons/io5"
 import { LuPencil } from 'react-icons/lu'
 import { PiBuildingsDuotone } from 'react-icons/pi'
 import { BiSolidBadgeCheck } from 'react-icons/bi'
 import { FaPlus } from 'react-icons/fa6'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../redux/action'
@@ -29,6 +30,7 @@ const HeroSection = function () {
 
     useEffect(() => {
         dispatch(getProfile(params.id))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.id])
 
     return (
@@ -42,7 +44,7 @@ const HeroSection = function () {
                                 <Image
                                     src={profiloUtente.image}
                                     alt="img profilo"
-                                    style={{ width: '90px', height: '90px' }}
+                                    style={{ width: '120px', height: '120px' }}
                                     roundedCircle
                                     className="shadow"
                                 />
@@ -54,21 +56,27 @@ const HeroSection = function () {
                         </Col>
                         <Col xs={12} className=" my-3 d-flex w-100 justify-content-end">
                             {/* matita */}
-                            <LuPencil className="fs-5" />
+                            <LuPencil className={"fs-5" + (params.id === "me" ? "" : " d-none")} />
                         </Col>
                         {/* foto profilo */}
 
-                        <Row className="align-items-center">
+                        <Row className="align-items-center mt-4">
                             <Col xs={9} className="d-flex flex-wrap justify-content-between">
-                                <h4>
-                                    {profiloUtente.name} {profiloUtente.surname}
-                                </h4>
-                                <Button
-                                    variant="outline-primary"
-                                    className={"rounded-pill fs-6 fw-medium border-primary border-dashed w-100" + (params.id === "me" ? "" : " d-none")}
-                                >
-                                    <BiSolidBadgeCheck /> Aggiungi badge di verifica
-                                </Button>
+                                <Row className="align-items-center w-100">
+                                    <Col xs={12} lg={6}>
+                                        <h4>
+                                            {profiloUtente.name} {profiloUtente.surname}
+                                        </h4>
+                                    </Col>
+                                    <Col xs={12} lg={6}>
+                                        <Button
+                                            variant="outline-primary"
+                                            className={"rounded-pill fs-6 fw-medium border-primary border-dashed w-100" + (params.id === "me" ? "" : " d-none")}
+                                        >
+                                            <BiSolidBadgeCheck /> Aggiungi badge di verifica
+                                        </Button>
+                                    </Col>
+                                </Row>
                             </Col>
                             <Col xs={3} className="text-center">
                                 {/* icona */}
@@ -83,40 +91,75 @@ const HeroSection = function () {
                             </Col>
                         </Row>
 
-                        <Col xs={12} className={"my-3" + (params.id === "me" ? "" : " d-none")}>
+                        <Col xs={12} className="my-3">
                             <Row className="g-3">
-                                <Col xs={3} md={12} lg={3}>
-                                    <Button
-                                        variant="primary"
-                                        className="rounded-pill fw-medium w-100"
-                                    >
-                                        Disponibile per
-                                    </Button>
-                                </Col>
-                                <Col xs={6} lg={3}>
-                                    <Button
-                                        variant="outline-primary"
-                                        className="rounded-pill fw-medium w-100"
-                                    >
-                                        Aggiungi sezione
-                                    </Button>
-                                </Col>
-                                <Col xs={3} lg={3}>
-                                    <Button
-                                        variant="outline-secondary"
-                                        className="rounded-pill border-secondary fw-medium w-100 "
-                                    >
-                                        Risorse
-                                    </Button>
-                                </Col>
-                                <Col xs={12} lg={3}>
-                                    <Button
-                                        variant="outline-primary"
-                                        className="rounded-pill fw-medium  w-100"
-                                    >
-                                        Migliora profilo
-                                    </Button>
-                                </Col>
+                                {params.id === "me" ? (
+                                    <>   <Col xs={3} md={12} lg={3}>
+
+                                        <Button
+                                            variant="primary"
+                                            className="rounded-pill fw-medium w-100"
+                                        >
+                                            Disponibile per
+                                        </Button>
+                                    </Col>
+                                        <Col xs={6} lg={3}>
+                                            <Button
+                                                variant="outline-primary"
+                                                className="rounded-pill fw-medium w-100"
+                                            >
+                                                Aggiungi sezione
+                                            </Button>
+                                        </Col>
+                                        <Col xs={3} lg={3}>
+                                            <Button
+                                                variant="outline-secondary"
+                                                className="rounded-pill border-secondary fw-medium w-100 "
+                                            >
+                                                Risorse
+                                            </Button>
+                                        </Col>
+                                        <Col xs={12} lg={3}>
+                                            <Button
+                                                variant="outline-primary"
+                                                className="rounded-pill fw-medium  w-100"
+                                            >
+                                                Migliora profilo
+                                            </Button>
+                                        </Col>
+                                    </>) : (
+                                    <>
+                                        <Col xs={3} md={12} lg={4}>
+
+                                            <Button
+                                                variant="primary"
+                                                className="rounded-pill fw-medium w-100"
+                                            >
+                                                <IoPersonAddSharp className="me-2 fs-5" />
+                                                Collegati
+                                            </Button>
+                                        </Col>
+                                        <Col xs={6} lg={4}>
+                                            <Button
+                                                variant="outline-primary"
+                                                className="rounded-pill fw-medium w-100"
+                                            >
+                                                Messaggio
+                                            </Button>
+                                        </Col>
+                                        <Col xs={3} lg={4}>
+                                            <Button
+                                                variant="outline-secondary"
+                                                className="rounded-pill border-secondary fw-medium w-100 "
+                                            >
+                                                Altro
+                                            </Button>
+                                        </Col>
+
+                                    </>
+
+                                )}
+
                             </Row>
                         </Col>
                         <Row>
