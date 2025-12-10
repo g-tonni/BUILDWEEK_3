@@ -1,36 +1,298 @@
-import { Card, Row, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
+import { Modal, Button, Form } from "react-bootstrap";
+import {  FaTimes } from "react-icons/fa";
 
 const Esperienza = ()=>{
-    return (
-    <Card className="mt-3 pb-3">
-      <Row className="align-items-center mb-3">
-        <Col>
-          <div className="d-flex align-items-center justify-content-between mt-3 mx-4">
-            <h4 className="mb-3">Esperienza</h4>
-            <div className="d-flex align-items-center gap-3">
-              <i class="bi bi-plus"    style={{ fontSize: "32px" }}></i>
-              <i className="bi bi-pen"></i>
+  const [showModal, setShowModal] = useState(false);
+  const [esperienze, setEsperienze] = useState([]);
+  const [formData, setFormData] = useState({
+role: "",
+company: "",
+  startDate: "",
+  endDate: "",
+  description: "",
+  area: "",
+  });
+  const [errors, setErrors] = useState({});
+
+
+  const handleShow = () => setShowModal(true);
+  const handleClose = () => {
+    setShowModal(false);
+    setFormData({
+    role: "",
+company: "",
+  startDate: "",
+  endDate: "",
+  description: "",
+  area: "",
+    });
+    setErrors({});
+  };
+
+
+
+  /* const validate = () => {
+    const newErrors = {};
+    if (!formData.role) newErrors.role = "Obbligatorio";
+    if (!formData.company) newErrors.company = "Obbligatorio";
+    if (!formData.startDate) newErrors.startDate = "Obbligatorio";
+    if (!formData.endDate) newErrors.endDate = "Obbligatorio";
+    if (!formData.description) newErrors.description = "Obbligatorio";
+    if (!formData.area) newErrors.area = "Obbligatorio";
+    return newErrors;
+  }; */
+
+  /* const handleSave = () => {
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    setEsperienze([...esperienze, formData]);
+    handleClose();
+  }; */
+
+  const handleDelete = (index) => {
+    const newList = [...esperienze];
+    newList.splice(index, 1);
+    setEsperienze(newList);
+  };
+  const PersonalId = useSelector ((currentState) =>{
+  return currentState.profiles.profiloUtente?._id
+}) 
+ 
+  const getExperience = () => {
+    fetch(`https://striveschool-api.herokuapp.com/api/profile/${PersonalId}/experiences`, {
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
+      },}
+    )
+.then((res) => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw new Error('errore')
+        }
+      })
+      .then((esperienze) => {
+              console.log('esp1', esperienze)
+             setEsperienze (esperienze)
+            })
+
+            .catch((err) => {
+              console.log('errore', err)
+            })
+
+
+  }
+ 
+
+ const postExperience = () => {
+    fetch(`https://striveschool-api.herokuapp.com/api/profile/${PersonalId}/experiences`, {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
+      }, body: JSON.stringify(formData),}
+    )
+.then((res) => {
+        if (res.ok) {
+          return alert("Esperienza Postata")
+        } else {
+          throw new Error('errore')
+        }
+      })
+            .catch((err) => {
+              console.log('errore', err)
+            })
+
+
+  }
+  console.log("ESPERIENZA MONTATA");
+  
+  useEffect(() => {
+    if (PersonalId) {
+      getExperience();
+    }
+  }, [PersonalId]);
+
+  return (
+    <>
+    {PersonalId ? (
+      <>
+ <div className="container mt-4 linkedin-card">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <div>
+        <h4>Esperienza</h4>
+        </div>
+        <div style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "5px",
+    padding: "6px 12px",
+    color: "black",
+    borderRadius: "4px",
+    fontWeight: "500",
+    textDecoration: "none",
+    transition: "transform 0.2s, background-color 0.2s",
+    cursor: "pointer",
+  }}>
+   <a
+  href="#"
+  onClick={(e) => { e.preventDefault(); handleShow(); }}
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "5px",
+    padding: "6px 12px",
+    color: "black",
+    borderRadius: "4px",
+    fontWeight: "500",
+    textDecoration: "none",
+    transition: "transform 0.2s, background-color 0.2s",
+    cursor: "pointer",
+  }}
+  onMouseEnter={e => e.currentTarget.style.transform = "scale(1.1)"}
+  onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+>
+
+  <i className="bi bi-plus"    style={{ fontSize: "32px" }}></i>
+</a>
+ <i className="bi bi-pen"></i>
+</div>
+      </div>
+
+      {/* Lista formazioni */}
+      <ul className="list-group">
+        {esperienze.map((item, index) => (
+          <li
+            key={index}
+            className="list-group-item d-flex justify-content-between align-items-start"
+          >
+            <div>
+              <strong>{item.role}</strong> - {item.company} <br />
+              <span>startDate: {item.startDate}</span> <br />
+              <span>Codice corso: {item.endDate}</span> <br />
+              Inizio: {item.startDate} {item.fine && `- Fine: ${item.endDate}`} <br />
+              {item.description && <small>{item.description}</small>}
+              {item.area && <small>{item.area}</small>}
             </div>
-          </div>
+            <FaTimes
+              className="text-danger"
+              style={{ cursor: "pointer" }}
+              onClick={() => handleDelete(index)}
+              title="Elimina"
+            />
+          </li>
+        ))}
+      </ul>
 
-        <Col className="d-flex flex-row align-items-center pe-0" md={4} xs={12}>
-  <img
-    src="https://img5.juzaphoto.com/001/shared_files/uploads/3229249_l.jpg"
-    alt="frfrr"
-    className="img-fluid ms-4 "
-    style={{ width: "50px", height: "50px" }}
-  />
+      {/* Modal form */}
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Aggiungi esperienza</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={()=>{postExperience()}}>
+            <Form.Group className="mb-2">
+              <Form.Label>Ruolo *</Form.Label>
+              <Form.Control
+                type="text"
+                name="ruolo"
+                value={formData.role}
+                onChange={(e)=>{setFormData({
+                  ...formData,
+                  role:e.target.value
+                })}}
+                isInvalid={!!errors.role}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.role}
+              </Form.Control.Feedback>
+            </Form.Group>
 
-  <div className="ms-3">
-    <h6 className="mt-2 mb-2">Assistente sociale</h6>
-    <p className="text-muted m-0">Asilo Nido La Tartaruga</p>
-  </div>
-</Col>
-        </Col>
-      </Row>
-    </Card>
+            <Form.Group className="mb-2">
+              <Form.Label>Azienda *</Form.Label>
+              <Form.Control
+                type="text"
+                name="Azienda"
+                value={formData.company}
+                onChange={(e)=>{setFormData({
+                  ...formData,
+                  company:e.target.value
+                })}}
+                isInvalid={!!errors.company}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.company}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Data inizio *</Form.Label>
+              <Form.Control
+                type="date"
+                name="inizio"
+                value={formData.startDate}
+                onChange={(e)=>{setFormData({
+                  ...formData,
+                  startDate:e.target.value
+                })}}
+                isInvalid={!!errors.startDate}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.startDate}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-2">
+              <Form.Label>Data fine</Form.Label>
+              <Form.Control
+                type="date"
+                name="fine"
+                value={formData.endDate}
+                onChange={(e)=>{setFormData({
+                  ...formData,
+                  endDate:e.target.value
+                })}}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-2">
+              <Form.Label>Descrizione</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="descrizione"
+                value={formData.description}
+                onChange={(e)=>{setFormData({
+                  ...formData,
+                  description:e.target.value
+                })}}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Annulla
+          </Button>
+          <Button variant="primary" onClick={postExperience()}>
+            Salva
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
+    </>
+    ) : (<div>Errore..</div>)}
+   </>
   );
 };
+ 
+ 
+  
+;
 
 
 export default Esperienza
