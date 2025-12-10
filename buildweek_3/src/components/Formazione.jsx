@@ -76,7 +76,21 @@ const Formazione = () => {
   return (
     <div className="container mt-4 linkedin-card">
       <div className="d-flex justify-content-between align-items-center mb-3">
+        <div>
         <h4>Formazione</h4>
+        </div>
+        <div style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "5px",
+    padding: "6px 12px",
+    color: "black",
+    borderRadius: "4px",
+    fontWeight: "500",
+    textDecoration: "none",
+    transition: "transform 0.2s, background-color 0.2s",
+    cursor: "pointer",
+  }}>
    <a
   href="#"
   onClick={(e) => { e.preventDefault(); handleShow(); }}
@@ -95,9 +109,11 @@ const Formazione = () => {
   onMouseEnter={e => e.currentTarget.style.transform = "scale(1.1)"}
   onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
 >
-  <FaPlus />
-  Aggiungi
+
+  <i class="bi bi-plus"    style={{ fontSize: "32px" }}></i>
 </a>
+ <i className="bi bi-pen"></i>
+</div>
       </div>
 
       {/* Lista formazioni */}

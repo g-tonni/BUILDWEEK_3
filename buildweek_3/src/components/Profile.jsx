@@ -19,9 +19,9 @@ const Profile = function () {
           <Analisi />
           <Attivita />
           <Esperienza />
+          <Formazione/>
           <Competenze />
           <Interessi />
-          <Formazione />
         </Col>
 
         <Col xs={12} md={4} className="mt-3">
