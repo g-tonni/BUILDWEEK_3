@@ -1,38 +1,36 @@
-import { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
-import { Modal, Button, Form } from "react-bootstrap";
-import { FaTimes } from "react-icons/fa";
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { Modal, Button, Form } from 'react-bootstrap'
+import { FaTimes } from 'react-icons/fa'
 
 const Esperienza = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [esperienze, setEsperienze] = useState([]);
+  const [showModal, setShowModal] = useState(false)
+  const [esperienze, setEsperienze] = useState([])
   const [formData, setFormData] = useState({
-    role: "",
-    company: "",
-    startDate: "",
-    endDate: "",
-    description: "",
-    area: "",
-  });
-  const [errors, setErrors] = useState({});
+    role: '',
+    company: '',
+    startDate: '',
+    endDate: '',
+    description: '',
+    area: '',
+  })
+  const [errors, setErrors] = useState({})
 
-  const [idExp, setIdExp] = useState("")
+  const [idExp, setIdExp] = useState('')
 
-  const handleShow = () => setShowModal(true);
+  const handleShow = () => setShowModal(true)
   const handleClose = () => {
-    setShowModal(false);
+    setShowModal(false)
     setFormData({
-      role: "",
-      company: "",
-      startDate: "",
-      endDate: "",
-      description: "",
-      area: "",
-    });
-    setErrors({});
-  };
-
-
+      role: '',
+      company: '',
+      startDate: '',
+      endDate: '',
+      description: '',
+      area: '',
+    })
+    setErrors({})
+  }
 
   /* const validate = () => {
     const newErrors = {};
@@ -56,20 +54,23 @@ const Esperienza = () => {
   }; */
 
   const handleDelete = (index) => {
-    const newList = [...esperienze];
-    newList.splice(index, 1);
-    setEsperienze(newList);
-  };
+    const newList = [...esperienze]
+    newList.splice(index, 1)
+    setEsperienze(newList)
+  }
   const PersonalId = useSelector((currentState) => {
     return currentState.profiles.profiloUtente?._id
   })
 
   const getExperience = () => {
-    fetch(`https://striveschool-api.herokuapp.com/api/profile/${PersonalId}/experiences`, {
-      headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
-      },
-    }
+    fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${PersonalId}/experiences`,
+      {
+        headers: {
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
+        },
+      }
     )
       .then((res) => {
         if (res.ok) {
@@ -86,21 +87,18 @@ const Esperienza = () => {
       .catch((err) => {
         console.log('errore', err)
       })
-
-
   }
-
 
   const postExperience = () => {
     let method
     let finalUrl
     let url = `https://striveschool-api.herokuapp.com/api/profile/${PersonalId}/experiences/`
 
-    if (idExp !== "") {
-      method = "PUT"
+    if (idExp !== '') {
+      method = 'PUT'
       finalUrl = url + idExp
     } else {
-      method = "POST"
+      method = 'POST'
       finalUrl = url
     }
 
@@ -108,17 +106,17 @@ const Esperienza = () => {
       method: method,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
-      }, body: JSON.stringify(formData),
-    }
-    )
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
+      },
+      body: JSON.stringify(formData),
+    })
       .then((res) => {
         if (res.ok) {
-          alert("Esperienza Postata")
+          alert('Esperienza Postata')
           getExperience()
 
           handleClose()
-
         } else {
           throw new Error('errore')
         }
@@ -126,17 +124,15 @@ const Esperienza = () => {
       .catch((err) => {
         console.log('errore', err)
       })
-
-
   }
-  console.log("ESPERIENZA MONTATA");
+  console.log('ESPERIENZA MONTATA')
 
   useEffect(() => {
     if (PersonalId) {
-      getExperience();
+      getExperience()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [PersonalId]);
+  }, [PersonalId])
 
   const deleteExperience = function (idExp) {
 
@@ -172,38 +168,46 @@ const Esperienza = () => {
               <div>
                 <h4>Esperienza</h4>
               </div>
-              <div style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "5px",
-                padding: "6px 12px",
-                color: "black",
-                borderRadius: "4px",
-                fontWeight: "500",
-                textDecoration: "none",
-                transition: "transform 0.2s, background-color 0.2s",
-                cursor: "pointer",
-              }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  padding: '6px 12px',
+                  color: 'black',
+                  borderRadius: '4px',
+                  fontWeight: '500',
+                  textDecoration: 'none',
+                  transition: 'transform 0.2s, background-color 0.2s',
+                  cursor: 'pointer',
+                }}
+              >
                 <a
                   href="#"
-                  onClick={(e) => { e.preventDefault(); handleShow(); }}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    padding: "6px 12px",
-                    color: "black",
-                    borderRadius: "4px",
-                    fontWeight: "500",
-                    textDecoration: "none",
-                    transition: "transform 0.2s, background-color 0.2s",
-                    cursor: "pointer",
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleShow()
                   }}
-                  onMouseEnter={e => e.currentTarget.style.transform = "scale(1.1)"}
-                  onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    padding: '6px 12px',
+                    color: 'black',
+                    borderRadius: '4px',
+                    fontWeight: '500',
+                    textDecoration: 'none',
+                    transition: 'transform 0.2s, background-color 0.2s',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.transform = 'scale(1.1)')
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.transform = 'scale(1)')
+                  }
                 >
-
-                  <i className="bi bi-plus" style={{ fontSize: "32px" }}></i>
+                  <i className="bi bi-plus" style={{ fontSize: '32px' }}></i>
                 </a>
                 <i className="bi bi-pen"></i>
               </div>
@@ -217,11 +221,12 @@ const Esperienza = () => {
                   className="list-group-item d-flex justify-content-between align-items-start"
                 >
                   <div>
-                    <strong>{item.role}</strong> - {item.company} <br />
-
-
-                    Inizio: {new Date(item.startDate).toLocaleDateString()} <br />
-                    Fine: {new Date(item.endDate).toLocaleDateString()}<br />
+                    <strong className="fs-5">{item.role}</strong> -{' '}
+                    {item.company} <br />
+                    Inizio: {new Date(item.startDate).toLocaleDateString()}{' '}
+                    <br />
+                    Fine: {new Date(item.endDate).toLocaleDateString()}
+                    <br />
                     {item.description && <small>{item.description}</small>}
                     {item.area && <small>{item.area}</small>}
                   </div>
@@ -245,6 +250,31 @@ const Esperienza = () => {
                     setIdExp(item._id)
                   }}>
                     <i className="bi bi-pen"></i></a>
+                  <div className="d-flex align-items-center">
+                    <a
+                      onClick={(e) => {
+                        e.preventDefault()
+                        handleShow()
+                        setFormData({
+                          role: item.role,
+                          company: item.company,
+                          startDate: item.startDate,
+                          endDate: item.endDate,
+                          description: item.description,
+                          area: item.area,
+                        })
+                        setIdExp(item._id)
+                      }}
+                    >
+                      <i className="bi bi-pen me-4"></i>
+                    </a>
+                    <FaTimes
+                      className="text-danger"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => handleDelete(index)}
+                      title="Elimina"
+                    />
+                  </div>
                 </li>
               ))}
             </ul>
@@ -255,10 +285,12 @@ const Esperienza = () => {
                 <Modal.Title>Aggiungi esperienza</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Form onSubmit={(e) => {
-                  e.preventDefault()
-                  postExperience()
-                }}>
+                <Form
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    postExperience()
+                  }}
+                >
                   <Form.Group className="mb-2">
                     <Form.Label>Ruolo *</Form.Label>
                     <Form.Control
@@ -268,7 +300,7 @@ const Esperienza = () => {
                       onChange={(e) => {
                         setFormData({
                           ...formData,
-                          role: e.target.value
+                          role: e.target.value,
                         })
                       }}
                       isInvalid={!!errors.role}
@@ -287,7 +319,7 @@ const Esperienza = () => {
                       onChange={(e) => {
                         setFormData({
                           ...formData,
-                          company: e.target.value
+                          company: e.target.value,
                         })
                       }}
                       isInvalid={!!errors.company}
@@ -305,7 +337,7 @@ const Esperienza = () => {
                       onChange={(e) => {
                         setFormData({
                           ...formData,
-                          startDate: e.target.value
+                          startDate: e.target.value,
                         })
                       }}
                       isInvalid={!!errors.startDate}
@@ -324,7 +356,7 @@ const Esperienza = () => {
                       onChange={(e) => {
                         setFormData({
                           ...formData,
-                          endDate: e.target.value
+                          endDate: e.target.value,
                         })
                       }}
                     />
@@ -340,7 +372,7 @@ const Esperienza = () => {
                       onChange={(e) => {
                         setFormData({
                           ...formData,
-                          description: e.target.value
+                          description: e.target.value,
                         })
                       }}
                     />
@@ -349,24 +381,20 @@ const Esperienza = () => {
                     <Button variant="secondary" onClick={handleClose}>
                       Annulla
                     </Button>
-                    <Button variant="primary" type="submit" >
+                    <Button variant="primary" type="submit">
                       Salva
                     </Button>
                   </Modal.Footer>
                 </Form>
               </Modal.Body>
-
             </Modal>
           </div>
         </>
-      ) : (<div>Errore..</div>)}
+      ) : (
+        <div>Errore..</div>
+      )}
     </>
-  );
-};
-
-
-
-;
-
+  )
+}
 
 export default Esperienza
