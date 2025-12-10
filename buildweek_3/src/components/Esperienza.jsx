@@ -116,6 +116,7 @@ const Esperienza = () => {
         if (res.ok) {
           alert("Esperienza Postata")
           getExperience()
+
           handleClose()
 
         } else {
@@ -136,6 +137,31 @@ const Esperienza = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [PersonalId]);
+
+  const deleteExperience = function (idExp) {
+
+    fetch(`https://striveschool-api.herokuapp.com/api/profile/${PersonalId}/experiences/` + idExp, {
+      method: "DELETE",
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
+      }
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert("eliminato")
+          getExperience()
+        } else {
+          throw new Error("errore nell'eliminazione")
+        }
+      })
+      .catch((err) => {
+        console.log("err:", err)
+      })
+
+
+  }
+
+
 
   return (
     <>
@@ -202,7 +228,7 @@ const Esperienza = () => {
                   <FaTimes
                     className="text-danger"
                     style={{ cursor: "pointer" }}
-                    onClick={() => handleDelete(index)}
+                    onClick={() => deleteExperience(item._id)}
                     title="Elimina"
                   />
                   <a onClick={(e) => {
