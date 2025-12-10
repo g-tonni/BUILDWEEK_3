@@ -77,11 +77,12 @@ const HeroSection = function () {
 
                     <Row className="align-items-center">
 
-                        <Col xs={9} className="d-flex flex-wrap justify-content-between">
+                        <Col xs={7} className="d-flex flex-wrap justify-content-between">
                             <h4>{profiloUtente.name} {" "}
                                 {profiloUtente.
                                     surname
                                 }</h4>
+
                             <Button variant="outline-primary" className="rounded-pill fs-6 fw-medium border-primary border-dashed w-100">
                                 <BiSolidBadgeCheck />  Aggiungi badge di verifica
                             </Button>
