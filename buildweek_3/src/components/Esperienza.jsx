@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { FaTimes } from 'react-icons/fa'
+import { useParams } from "react-router-dom"
 
 const Esperienza = () => {
   const [showModal, setShowModal] = useState(false)
@@ -32,39 +33,16 @@ const Esperienza = () => {
     setErrors({})
   }
 
-  /* const validate = () => {
-    const newErrors = {};
-    if (!formData.role) newErrors.role = "Obbligatorio";
-    if (!formData.company) newErrors.company = "Obbligatorio";
-    if (!formData.startDate) newErrors.startDate = "Obbligatorio";
-    if (!formData.endDate) newErrors.endDate = "Obbligatorio";
-    if (!formData.description) newErrors.description = "Obbligatorio";
-    if (!formData.area) newErrors.area = "Obbligatorio";
-    return newErrors;
-  }; */
+  const params = useParams()
 
-  /* const handleSave = () => {
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-    setEsperienze([...esperienze, formData]);
-    handleClose();
-  }; */
 
-  const handleDelete = (index) => {
-    const newList = [...esperienze]
-    newList.splice(index, 1)
-    setEsperienze(newList)
-  }
   const PersonalId = useSelector((currentState) => {
     return currentState.profiles.profiloUtente?._id
   })
 
   const getExperience = () => {
     fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/${PersonalId}/experiences`,
+      `https://striveschool-api.herokuapp.com/api/profile/${params.id === "me" ? PersonalId : params.id}/experiences`,
       {
         headers: {
           Authorization:
@@ -132,7 +110,7 @@ const Esperienza = () => {
       getExperience()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [PersonalId])
+  }, [PersonalId, params.id])
 
   const deleteExperience = function (idExp) {
 
@@ -187,19 +165,10 @@ const Esperienza = () => {
                   onClick={(e) => {
                     e.preventDefault()
                     handleShow()
+
                   }}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '5px',
-                    padding: '6px 12px',
-                    color: 'black',
-                    borderRadius: '4px',
-                    fontWeight: '500',
-                    textDecoration: 'none',
-                    transition: 'transform 0.2s, background-color 0.2s',
-                    cursor: 'pointer',
-                  }}
+                  className="text-decoration-none"
+
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.transform = 'scale(1.1)')
                   }
@@ -207,9 +176,9 @@ const Esperienza = () => {
                     (e.currentTarget.style.transform = 'scale(1)')
                   }
                 >
-                  <i className="bi bi-plus" style={{ fontSize: '32px' }}></i>
+                  <i className={"bi bi-plus text-dark " + (params.id === "me" ? "d-flex" : "d-none")} style={{ fontSize: '32px' }}></i>
                 </a>
-                <i className="bi bi-pen"></i>
+
               </div>
             </div>
 
@@ -230,27 +199,9 @@ const Esperienza = () => {
                     {item.description && <small>{item.description}</small>}
                     {item.area && <small>{item.area}</small>}
                   </div>
-                  <FaTimes
-                    className="text-danger"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => deleteExperience(item._id)}
-                    title="Elimina"
-                  />
-                  <a onClick={(e) => {
-                    e.preventDefault();
-                    handleShow();
-                    setFormData({
-                      role: item.role,
-                      company: item.company,
-                      startDate: item.startDate,
-                      endDate: item.endDate,
-                      description: item.description,
-                      area: item.area,
-                    });
-                    setIdExp(item._id)
-                  }}>
-                    <i className="bi bi-pen"></i></a>
-                  <div className="d-flex align-items-center">
+
+
+                  <div className={" align-items-center " + (params.id === "me" ? "d-flex" : "d-none")}>
                     <a
                       onClick={(e) => {
                         e.preventDefault()
@@ -270,8 +221,8 @@ const Esperienza = () => {
                     </a>
                     <FaTimes
                       className="text-danger"
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => handleDelete(index)}
+                      style={{ cursor: "pointer" }}
+                      onClick={() => deleteExperience(item._id)}
                       title="Elimina"
                     />
                   </div>
@@ -288,6 +239,7 @@ const Esperienza = () => {
                 <Form
                   onSubmit={(e) => {
                     e.preventDefault()
+                    setIdExp("")
                     postExperience()
                   }}
                 >
@@ -392,7 +344,8 @@ const Esperienza = () => {
         </>
       ) : (
         <div>Errore..</div>
-      )}
+      )
+      }
     </>
   )
 }

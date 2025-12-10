@@ -5,6 +5,7 @@ import { IoMdPersonAdd } from 'react-icons/io'
 import { MdAdd } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProfiles } from '../redux/action'
+import { Link } from "react-router-dom"
 
 const Sidebar = function () {
   const profili = useSelector((currState) => {
@@ -29,16 +30,20 @@ const Sidebar = function () {
           <SidebarContainer title="Altri profili per te" subtitle="No">
             {prof1.map((profilo) => {
               return (
-                <SidebarProfile
-                  key={profilo._id}
-                  des={profilo.title}
-                  name={`${profilo.name} ${profilo.surname} `}
-                  image={profilo.image}
-                  line="Si"
-                >
-                  <IoMdPersonAdd className="me-2" />
-                  Collegati
-                </SidebarProfile>
+                <Link
+                  className="text-decoration-none text-dark"
+                  to={`/profile/${profilo._id}`}>
+                  <SidebarProfile
+                    key={profilo._id}
+                    des={profilo.title}
+                    name={`${profilo.name} ${profilo.surname} `}
+                    image={profilo.image}
+                    line="Si"
+                  >
+                    <IoMdPersonAdd className="me-2" />
+                    Collegati
+                  </SidebarProfile>
+                </Link>
               )
             })}
           </SidebarContainer>
@@ -50,16 +55,20 @@ const Sidebar = function () {
           >
             {prof2.map((profilo) => {
               return (
-                <SidebarProfile
-                  key={profilo._id}
-                  des={profilo.title}
-                  name={`${profilo.name} ${profilo.surname} `}
-                  image={profilo.image}
-                  line="Si"
-                >
-                  <IoMdPersonAdd className="me-2" />
-                  Collegati
-                </SidebarProfile>
+                <Link
+                  className="text-decoration-none text-dark"
+                  to={`/profile/${profilo._id}`}>
+                  <SidebarProfile
+                    key={profilo._id}
+                    des={profilo.title}
+                    name={`${profilo.name} ${profilo.surname} `}
+                    image={profilo.image}
+                    line="Si"
+                  >
+                    <IoMdPersonAdd className="me-2" />
+                    Collegati
+                  </SidebarProfile>
+                </Link>
               )
             })}
           </SidebarContainer>

@@ -9,7 +9,10 @@ import Formazione from './Formazione'
 import Esperienza from './Esperienza'
 import ConsigliatiCarousel from './ConsigliatiCarousel'
 
+
 const Profile = function () {
+
+
   return (
     <Container>
       <Row>
@@ -19,7 +22,7 @@ const Profile = function () {
           <Analisi />
           <Attivita />
           <Esperienza />
-          <Formazione/>
+          <Formazione />
           <Competenze />
           <Interessi />
         </Col>

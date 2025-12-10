@@ -3,9 +3,12 @@ import { Modal, Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import "../css/Formazione.css"
+import { useParams } from "react-router-dom";
 
 const Formazione = () => {
-    console.log("FORMZIONE MONTATA");
+  const params = useParams()
+
+  console.log("FORMZIONE MONTATA");
   const [showModal, setShowModal] = useState(false);
   const [formazioni, setFormazioni] = useState([]);
   const [formData, setFormData] = useState({
@@ -77,43 +80,46 @@ const Formazione = () => {
     <div className="container mt-4 linkedin-card">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <div>
-        <h4>Formazione</h4>
+          <h4>Formazione</h4>
         </div>
-        <div style={{
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "5px",
-    padding: "6px 12px",
-    color: "black",
-    borderRadius: "4px",
-    fontWeight: "500",
-    textDecoration: "none",
-    transition: "transform 0.2s, background-color 0.2s",
-    cursor: "pointer",
-  }}>
-   <a
-  href="#"
-  onClick={(e) => { e.preventDefault(); handleShow(); }}
-  style={{
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "5px",
-    padding: "6px 12px",
-    color: "black",
-    borderRadius: "4px",
-    fontWeight: "500",
-    textDecoration: "none",
-    transition: "transform 0.2s, background-color 0.2s",
-    cursor: "pointer",
-  }}
-  onMouseEnter={e => e.currentTarget.style.transform = "scale(1.1)"}
-  onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
->
+        <div
+          /*style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "5px",
+            padding: "6px 12px",
+            color: "black",
+            borderRadius: "4px",
+            fontWeight: "500",
+            textDecoration: "none",
+            transition: "transform 0.2s, background-color 0.2s",
+            cursor: "pointer",
 
-  <i class="bi bi-plus"    style={{ fontSize: "32px" }}></i>
-</a>
- <i className="bi bi-pen"></i>
-</div>
+          }}} */
+          className={"text-decoration-none " + (params.id === "me" ? "d-flex align-items-center" : "d-none")}>
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); handleShow(); }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "5px",
+              padding: "6px 12px",
+              color: "black",
+              borderRadius: "4px",
+              fontWeight: "500",
+              textDecoration: "none",
+              transition: "transform 0.2s, background-color 0.2s",
+              cursor: "pointer",
+            }}
+            onMouseEnter={e => e.currentTarget.style.transform = "scale(1.1)"}
+            onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+          >
+
+            <i class="bi bi-plus" style={{ fontSize: "32px" }}></i>
+          </a>
+          <i className="bi bi-pen"></i>
+        </div>
       </div>
 
       {/* Lista formazioni */}
@@ -240,7 +246,7 @@ const Formazione = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </div >
   );
 };
 

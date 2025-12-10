@@ -29,7 +29,7 @@ const HeroSection = function () {
 
     useEffect(() => {
         dispatch(getProfile(params.id))
-    }, [])
+    }, [params.id])
 
     return (
         <Container className="my-3 border rounded-3 bg-white">
@@ -65,7 +65,7 @@ const HeroSection = function () {
                                 </h4>
                                 <Button
                                     variant="outline-primary"
-                                    className="rounded-pill fs-6 fw-medium border-primary border-dashed w-100"
+                                    className={"rounded-pill fs-6 fw-medium border-primary border-dashed w-100" + (params.id === "me" ? "" : " d-none")}
                                 >
                                     <BiSolidBadgeCheck /> Aggiungi badge di verifica
                                 </Button>
@@ -83,7 +83,7 @@ const HeroSection = function () {
                             </Col>
                         </Row>
 
-                        <Col xs={12} className="my-3">
+                        <Col xs={12} className={"my-3" + (params.id === "me" ? "" : " d-none")}>
                             <Row className="g-3">
                                 <Col xs={3} md={12} lg={3}>
                                     <Button
@@ -120,7 +120,7 @@ const HeroSection = function () {
                             </Row>
                         </Col>
                         <Row>
-                            <Col xs={12}>
+                            <Col xs={12} className={(params.id === "me" ? "" : " d-none")}>
                                 <Carousel indicators={false} controls={true} className="my-3">
                                     <Carousel.Item>
                                         <Row>

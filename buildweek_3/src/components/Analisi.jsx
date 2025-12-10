@@ -1,10 +1,13 @@
 import { Card, Row, Col } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 const Analisi = () => {
+  const params = useParams()
+
   return (
-    <Card className="mt-3">
+    <Card className={"mt-3" + (params.id === "me" ? "" : " d-none")}>
       <Row className="align-items-center mb-3">
-      
+
         <Col >
           <h4 className="mt-3 mb-0 ms-4">Analisi</h4>
 
@@ -15,10 +18,10 @@ const Analisi = () => {
       </Row>
 
       <Row>
-     
+
         <Col className="d-flex  pe-0" md={4} xs={12}
         >
-          <i 
+          <i
             className="bi bi-people me-2 ms-4"
             style={{ fontSize: "22px" }}
           ></i>
@@ -31,7 +34,7 @@ const Analisi = () => {
           </div>
         </Col>
 
- 
+
         <Col className="d-flex  " md={8}>
           <i
             className="bi bi-bar-chart me-2 ms-4"
