@@ -16,6 +16,7 @@ const Esperienza = () => {
   });
   const [errors, setErrors] = useState({});
 
+  const [idExp, setIdExp] = useState("")
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => {
@@ -91,8 +92,20 @@ const Esperienza = () => {
 
 
   const postExperience = () => {
-    fetch(`https://striveschool-api.herokuapp.com/api/profile/${PersonalId}/experiences`, {
-      method: 'POST',
+    let method
+    let finalUrl
+    let url = `https://striveschool-api.herokuapp.com/api/profile/${PersonalId}/experiences/`
+
+    if (idExp !== "") {
+      method = "PUT"
+      finalUrl = url + idExp
+    } else {
+      method = "POST"
+      finalUrl = url
+    }
+
+    fetch(finalUrl, {
+      method: method,
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
@@ -179,9 +192,10 @@ const Esperienza = () => {
                 >
                   <div>
                     <strong>{item.role}</strong> - {item.company} <br />
-                    <span>startDate: {item.startDate}</span> <br />
-                    <span>Codice corso: {item.endDate}</span> <br />
-                    Inizio: {item.startDate} {item.fine && `- Fine: ${item.endDate}`} <br />
+
+
+                    Inizio: {new Date(item.startDate).toLocaleDateString()} <br />
+                    Fine: {new Date(item.endDate).toLocaleDateString()}<br />
                     {item.description && <small>{item.description}</small>}
                     {item.area && <small>{item.area}</small>}
                   </div>
@@ -191,6 +205,20 @@ const Esperienza = () => {
                     onClick={() => handleDelete(index)}
                     title="Elimina"
                   />
+                  <a onClick={(e) => {
+                    e.preventDefault();
+                    handleShow();
+                    setFormData({
+                      role: item.role,
+                      company: item.company,
+                      startDate: item.startDate,
+                      endDate: item.endDate,
+                      description: item.description,
+                      area: item.area,
+                    });
+                    setIdExp(item._id)
+                  }}>
+                    <i className="bi bi-pen"></i></a>
                 </li>
               ))}
             </ul>
