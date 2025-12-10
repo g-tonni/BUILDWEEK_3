@@ -19,6 +19,7 @@ const Profile = function () {
           <Analisi />
           <Attivita />
           <Esperienza />
+          <Formazione/>
           <Competenze />
           <Interessi />
         </Col>
