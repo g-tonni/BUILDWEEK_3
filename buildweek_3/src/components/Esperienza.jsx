@@ -121,6 +121,7 @@ const Esperienza = () => {
     if (PersonalId) {
       getExperience();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [PersonalId]);
 
   return (
