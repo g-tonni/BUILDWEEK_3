@@ -24,3 +24,7 @@
   line-clamp: 2;
   overflow: hidden;
 }
+
+.rimuoviFreccia::after {
+  display: none !important;
+}
