@@ -1,5 +1,6 @@
 import { Card, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { IoEye } from "react-icons/io5"
 
 const Analisi = () => {
   const params = useParams()
@@ -8,12 +9,12 @@ const Analisi = () => {
     <Card className={"mt-3" + (params.id === "me" ? "" : " d-none")}>
       <Row className="align-items-center mb-3">
 
-        <Col >
-          <h4 className="mt-3 mb-0 ms-4">Analisi</h4>
+        <Col xs={12} className="m-3" >
+          <h4>Analisi</h4>
 
-          <p className="text-muted ms-4">
-            <i className="bi bi-eye"></i> Solo per te
-          </p>
+          <div className="d-flex align-items-center">
+            <IoEye className="fs-5 text-secondary me-2" /> <span className="fs-6 text-secondary" > Solo per te</span>
+          </div>
         </Col>
       </Row>
 

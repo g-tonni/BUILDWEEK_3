@@ -6,16 +6,14 @@ function ProfileRecommendations3() {
       <Col md={12}>
         <Card className="h-100 p-3 bg-white border" style={{ color: '#333' }}>
           <Card.Body>
-            <div style={{ fontSize: '40px', marginBottom: '10px' }}></div>
+
             <Card.Title>
-              Scrivi un riepilogo per mettere in evidenza la tua personalità o
-              la tua esperienza lavorativa
+              In quale settore lavori?
             </Card.Title>
             <Card.Text>
-              Gli utenti che includono un riepilogo ricevono fino a 3,9 volte
-              più visualizzazioni del profilo.
+              Gli utenti che aggiungono un settore ricevono fino a 2,5 volte più visualizzazioni del profilo.
             </Card.Text>
-            <Button variant="primary" className="rounded-pill">
+            <Button variant="outline-secondary" className="rounded-pill text-dark border-black">
               Aggiungi un riepilogo
             </Button>
           </Card.Body>

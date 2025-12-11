@@ -3,27 +3,46 @@ import ProfileRecommendations from './Card'
 import ProfileRecommendationss from './Card2'
 import ProfileRecommendations3 from './Card3'
 import { useParams } from "react-router-dom"
+import { Row, Col, Container } from "react-bootstrap"
+import { IoEye } from "react-icons/io5"
 
 function ConsigliatiCarousel() {
   const params = useParams()
 
   return (
-    <>
-      <Carousel data-bs-theme="dark" className={(params.id === "me" ? "" : " d-none")} >
-        <Carousel.Item className=" justify-content-center">
-          <ProfileRecommendations />
-          <Carousel.Caption></Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item className="  justify-content-center">
-          <ProfileRecommendationss />
-          <Carousel.Caption></Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item className="  justify-content-center">
-          <ProfileRecommendations3 />
-          <Carousel.Caption></Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-    </>
+    <Container className={"bg-white border rounded-3" + (params.id === "me" ? "" : " d-none")}>
+      <Row>
+        <Col xs={12} className="m-3 ">
+          <h4>Consigliato per te</h4>
+          <div className="d-flex align-items-center">
+            <IoEye className="fs-5 text-secondary me-2" /> <span className="fs-6 text-secondary" > Solo per te</span>
+          </div>
+        </Col>
+        <Col xs={12} >
+
+          <Carousel indicators={false} controls={true} className="my-3">
+            <Carousel.Item>
+              <Row>
+                <Col xs={6}>
+                  <ProfileRecommendations />
+                </Col>
+
+                <Col xs={6}>
+                  <ProfileRecommendationss />
+                </Col>
+              </Row>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Row>
+                <Col xs={6}>
+                  <ProfileRecommendations3 />
+                </Col>
+              </Row>
+            </Carousel.Item>
+          </Carousel>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
