@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import HPColonnaPost from "./HPColonnaPost"
+import ProfileSidebar from "./SidebarSxHome"
 import { useEffect, useState } from "react"
 import AddsNewPosts from "./AddsNewPost"
 import ModaleNewPost from "./ModaleNewPost"
@@ -58,7 +59,7 @@ const HomePage = function () {
         <Container>
             <Row className="justify-content-end mt-3">
                 <Col xs={12} md={4} lg={2}>
-                    <p>SINISTRA</p>
+                    <ProfileSidebar />
                 </Col>
                 <Col xs={12} md={8} lg={7}>
                     <AddsNewPosts openModal={openModal} />
