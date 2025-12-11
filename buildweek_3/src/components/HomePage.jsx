@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import HPColonnaPost from "./HPColonnaPost"
-
+import RightHome from "./RightHome"
 
 const HomePage = function () {
     return (
@@ -13,7 +13,7 @@ const HomePage = function () {
                 <Col xs={12} md={8} lg={7}>
                     <HPColonnaPost />
                 </Col>
-                <Col xs={12} md={8} lg={3} ><p>DESTRA</p></Col>
+                <Col xs={12} md={8} lg={3} ><RightHome/></Col>
 
             </Row>
 
