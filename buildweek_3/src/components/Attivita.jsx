@@ -1,13 +1,20 @@
 import { Card, Row, Col, Button } from "react-bootstrap";
 
+import { useParams } from 'react-router-dom'
+
 const Attivita = () => {
+
+  const params = useParams()
+
+
+
   return (
     <Card className="mt-3">
       <Row className="align-items-center mb-3">
         <Col>
           <div className="d-flex align-items-center justify-content-between mt-3 mx-4">
             <h4 className="mb-0">Attività</h4>
-            <div className="d-flex align-items-center gap-3">
+            <div className={(params.id === "me" ? "d-flex align-items-center gap-3" : "d-none")}>
               <Button variant="outline-primary" className="rounded-pill fw-medium">
                 Crea un post
               </Button>

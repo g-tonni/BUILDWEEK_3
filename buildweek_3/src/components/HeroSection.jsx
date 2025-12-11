@@ -14,11 +14,11 @@ import { PiBuildingsDuotone } from 'react-icons/pi'
 import { BiSolidBadgeCheck } from 'react-icons/bi'
 import { FaPlus } from 'react-icons/fa6'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../redux/action'
 
-const HeroSection = function () {
+const HeroSection = function (props) {
     const profiloUtente = useSelector((currState) => {
         return currState.profiles.profiloUtente
     })
@@ -48,10 +48,13 @@ const HeroSection = function () {
                                     roundedCircle
                                     className="shadow"
                                 />
-                                <FaPlus
-                                    className="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 border border-1 border-primary text-primary"
-                                    size={24}
-                                />
+                                <Link onClick={() => {
+                                    props.openModal(true)
+                                }}>
+                                    <FaPlus
+                                        className="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 border border-1 border-primary text-primary"
+                                        size={24}
+                                    /></Link>
                             </div>
                         </Col>
                         <Col xs={12} className=" my-3 d-flex w-100 justify-content-end">

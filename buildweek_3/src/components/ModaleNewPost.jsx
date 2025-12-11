@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewPost, cambiaContenuto } from "../redux/action/homePageActions";
 
 const ModaleNewPost = function (props) {
 
@@ -10,6 +11,12 @@ const ModaleNewPost = function (props) {
         return currentState.articoli.postId
     })
 
+    const contenuto = useSelector((currentState) => {
+        return currentState.articoli.contenutoPost
+    })
+
+
+    const dispatch = useDispatch()
 
 
 
@@ -18,7 +25,7 @@ const ModaleNewPost = function (props) {
 
     // const [newPost, setNewPosts] = useState("")
     const [formPost, setFormPost] = useState({
-        text: ""
+        text: contenuto
     })
 
     const changePost = () => {
@@ -62,9 +69,13 @@ const ModaleNewPost = function (props) {
             })
     }
 
-    // useEffect(() => {
-    //     getPostHomePage()
-    // }, [])
+    useEffect(() => {
+
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setFormPost({
+            text: contenuto
+        })
+    }, [contenuto])
 
 
     return (
@@ -82,7 +93,8 @@ const ModaleNewPost = function (props) {
             <Modal.Body>
                 <Form onSubmit={(e) => {
                     e.preventDefault()
-
+                    dispatch(addNewPost(""))
+                    dispatch(cambiaContenuto(""))
                     changePost()
                     setFormPost({
                         text: ""

@@ -14,17 +14,18 @@ const ProfileSidebar = () => {
   }
 
   return (
-    <div className="profile-sidebar">
+    <div className="profile-sidebar mt-3">
       {/* Card Profilo Principale */}
       <Card className="mb-3 border-0 rounded-3 overflow-hidden">
         {/* Background header */}
-        <div 
+        <div
           style={{
             height: '60px',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            backgroundImage: 'url("../public/Screenshot_10-12-2025_91957_www.linkedin.com.jpeg") ',
+            backgroundSize: "cover",
           }}
         />
-        
+
         {/* Immagine profilo centrata */}
         <div className="text-center" style={{ marginTop: '-40px' }}>
           <Image

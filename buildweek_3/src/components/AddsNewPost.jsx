@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react"
+
 import { Button, Card, Col, Dropdown, Row, Form } from "react-bootstrap"
-import { HiDotsHorizontal } from "react-icons/hi"
-import { PiTagChevronBold, PiCodeBold } from "react-icons/pi"
-import { FaRegStar, FaLink, FaRegCommentDots, FaRepeat } from "react-icons/fa6"
-import { FiEdit2 } from "react-icons/fi"
-import { MdDelete } from "react-icons/md"
-import { IoEye } from "react-icons/io5"
-import { AiOutlineLike } from "react-icons/ai"
-import { BsFillSendFill } from "react-icons/bs"
+import { IoLogoYoutube } from "react-icons/io"
+import { AiFillPicture } from "react-icons/ai"
+import { RiArticleFill } from "react-icons/ri"
+
+
+
 
 const AddsNewPosts = function (props) {
 
@@ -36,10 +34,10 @@ const AddsNewPosts = function (props) {
             <Row>
 
                 <Col className="text-center py-3 d-flex justify-content-around">
-                    <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><AiOutlineLike className="fs-4 me-2" /> Consiglia</Button>
-                    <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><FaRegCommentDots className="fs-5 me-2" />  Commenta</Button>
-                    <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><FaRepeat className="fs-5 me-2" /> Diffondi il post</Button>
-                    <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><BsFillSendFill className="fs-6 me-2" /> Invia</Button>
+                    <Button variant="outline-light" className="text-dark fs-5 fw-medium border-0 d-flex align-items-center"><IoLogoYoutube className="fs-3 me-2 text-success" /> Video</Button>
+                    <Button variant="outline-light" className="text-dark fs-5 fw-medium border-0 d-flex align-items-center"><AiFillPicture className="fs-3 me-2 text-primary" />  Foto</Button>
+                    <Button variant="outline-light" className="text-dark fs-5 fw-medium border-0 d-flex align-items-center"><RiArticleFill className="fs-3 me-2 text-danger" /> Scrivi un articolo</Button>
+
                 </Col>
             </Row>
         </Card >

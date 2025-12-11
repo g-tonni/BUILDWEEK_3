@@ -6,15 +6,25 @@ import NavBarL from './components/NavBar'
 import store from './redux/store'
 import { Provider } from 'react-redux'
 import HomePage from "./components/HomePage"
+import ModaleImmagine from "./components/ModaleImmagine"
+import { useState } from "react"
 
 function App() {
+  const [modalShow, setModalShow] = useState(false)
+
+  const openModal = (value) => {
+    setModalShow(value)
+  }
   return (
     <Provider store={store}>
       <BrowserRouter>
         <NavBarL />
+        <ModaleImmagine show={modalShow}
+          onHide={() => setModalShow(false)} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/profile/:id" element={<Profile />} />
+
+          <Route path="/profile/:id" element={<Profile openModal={openModal} />} />
         </Routes>
         <Footer />
       </BrowserRouter>

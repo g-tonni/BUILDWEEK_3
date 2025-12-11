@@ -1,8 +1,9 @@
-import { GET_PERSONAL_PROFILE, GET_PROFILES} from '../action/index.js'
-const savedProfile = localStorage.getItem("profiloUtente");
+import { GET_PERSONAL_PROFILE, GET_PROFILES } from '../action/index.js'
+
 const initialState = {
   profiloUtente: null,
   profili: [],
+  ilMioID: '69383d5b601b380015479572'
 }
 
 export const profileReducer = function (currentState = initialState, action) {
@@ -17,7 +18,7 @@ export const profileReducer = function (currentState = initialState, action) {
         ...currentState,
         profili: action.payload,
       }
-      ;
+        ;
     default:
       return currentState
   }

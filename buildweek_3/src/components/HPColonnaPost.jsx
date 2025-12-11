@@ -9,12 +9,42 @@ import { IoEye } from "react-icons/io5"
 import { AiOutlineLike } from "react-icons/ai"
 import { BsFillSendFill } from "react-icons/bs"
 import { useDispatch, useSelector } from 'react-redux'
-import { addNewPost } from "../redux/action/homePageActions"
+import { addNewPost, cambiaContenuto } from "../redux/action/homePageActions"
+import { Link } from "react-router-dom"
 
 
-const HPColonnaPost = function ({ userPosts, openModal }) {
+const HPColonnaPost = function ({ userPosts, openModal, aggiornaDopoLaPost }) {
+
+    const profiloUtente = useSelector((currState) => {
+        return currState.profiles.ilMioID
+    })
 
     const dispatch = useDispatch()
+    let url = "https://striveschool-api.herokuapp.com/api/posts/"
+
+    const deletePost = function (idPost) {
+
+        fetch(url + idPost, {
+            method: "DELETE",
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
+            }
+        })
+            .then((res) => {
+                if (res.ok) {
+                    alert("eliminato")
+                    aggiornaDopoLaPost()
+                } else {
+                    throw new Error("errore nell'eliminazione")
+                }
+            })
+            .catch((err) => {
+                console.log("err:", err)
+            })
+
+
+    }
+
 
     return (
 
@@ -33,14 +63,19 @@ const HPColonnaPost = function ({ userPosts, openModal }) {
 
 
                                                 <div>
-                                                    <h5 className="mb-0">{post.username}</h5>
+                                                    <Link
+                                                        className="text-decoration-none text-dark"
+                                                        to={`/profile/${post.user._id}`}>
+
+                                                        <h5 className="mb-0">{post.username}</h5></Link>
                                                     <p className="text-dark mb-2" style={{ fontSize: "12px" }}> {new Date(post.createdAt).toLocaleDateString()}
                                                     </p>
                                                 </div>
                                             </div>
                                             <div >
                                                 {/* tre puntini */}
-                                                <Dropdown>
+
+                                                <Dropdown className={(profiloUtente === post.user._id ? "d-flex" : "d-none")}>
                                                     <Dropdown.Toggle className="bg-transparent  border-0 text-dark rimuoviFreccia " id="dropdown-basic">
                                                         <HiDotsHorizontal />
                                                     </Dropdown.Toggle>
@@ -56,9 +91,14 @@ const HPColonnaPost = function ({ userPosts, openModal }) {
                                                             href="#/action-2"
                                                             onClick={() => {
                                                                 dispatch(addNewPost(post._id))
+                                                                dispatch(cambiaContenuto(post.text))
                                                                 openModal(true)
                                                             }}><FiEdit2 className="fs-4 me-2" /> Modifica post</Dropdown.Item>
-                                                        <Dropdown.Item className="d-flex mb-2 fw-medium align-items-center" href="#/action-3"><MdDelete className="fs-4 me-2" /> Elimina post</Dropdown.Item>
+                                                        <Dropdown.Item
+                                                            onClick={() => {
+                                                                deletePost(post._id)
+                                                            }}
+                                                            className="d-flex mb-2 fw-medium align-items-center" href="#/action-3"><MdDelete className="fs-4 me-2" /> Elimina post</Dropdown.Item>
                                                         <Dropdown.Item className="d-flex mb-2 fw-medium align-items-center" href="#/action-1"><FaRegCommentDots className="fs-4 me-2" /> Chi può commentare questo post?</Dropdown.Item>
                                                         <Dropdown.Item className="d-flex mb-2 fw-medium align-items-center" href="#/action-2"><IoEye className="fs-4 me-2" /> Chi può vedere questo post?</Dropdown.Item>
 

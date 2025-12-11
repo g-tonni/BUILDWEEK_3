@@ -1,8 +1,8 @@
-import { GET_NEW_POST } from "../action/homePageActions"
+import { GET_CONTENT, GET_NEW_POST } from "../action/homePageActions"
 
 const initialState = {
-    postId: ""
-
+    postId: "",
+    contenutoPost: ""
 }
 
 export const homePageReducer = function (currentState = initialState, action) {
@@ -13,7 +13,11 @@ export const homePageReducer = function (currentState = initialState, action) {
                 ...currentState,
                 postId: action.payload
             }
-
+        case GET_CONTENT:
+            return {
+                ...currentState,
+                contenutoPost: action.payload
+            }
 
         default:
             return currentState

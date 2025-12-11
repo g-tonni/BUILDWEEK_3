@@ -10,14 +10,16 @@ import Esperienza from './Esperienza'
 import ConsigliatiCarousel from './ConsigliatiCarousel'
 
 
-const Profile = function () {
+
+const Profile = function (props) {
 
 
   return (
     <Container>
       <Row>
         <Col xs={12} md={8}>
-          <HeroSection />
+          <HeroSection openModal={props.openModal} />
+
           <ConsigliatiCarousel />
           <Analisi />
           <Attivita />

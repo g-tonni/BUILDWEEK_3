@@ -70,7 +70,7 @@ const HomePage = function () {
                         onHide={() => setModalShow(false)} />
 
                     <HPColonnaPost
-
+                        aggiornaDopoLaPost={aggiornaDopoLaPost}
                         openModal={openModal}
                         userPosts={userPosts} />
                 </Col>
