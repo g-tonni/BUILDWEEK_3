@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import NavBarL from './components/NavBar'
 import store from './redux/store'
 import { Provider } from 'react-redux'
+import HomePage from "./components/HomePage"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <BrowserRouter>
         <NavBarL />
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/profile/:id" element={<Profile />} />
         </Routes>
         <Footer />
