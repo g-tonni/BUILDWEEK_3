@@ -54,6 +54,9 @@ const HomePage = function () {
     useEffect(() => {
         getPostHomePage()
     }, [])
+
+
+    
     return (
 
         <Container>

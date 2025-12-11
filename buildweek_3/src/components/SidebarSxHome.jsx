@@ -1,13 +1,22 @@
+import { useEffect, useState } from "react";
 import { Card, Image, ListGroup } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
 import { BsBookmarkFill } from 'react-icons/bs';
 import { FaEye } from 'react-icons/fa';
 import '../css/Sidebar.css';
 
 const ProfileSidebar = () => {
-  const profiloUtente = useSelector((currState) => {
-    return currState?.profiles?.profiloUtente;
-  });
+  const [profiloUtente, setProfiloUtente] = useState(null);
+
+  useEffect(() => {
+    fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
+      }
+    })
+      .then(res => res.json())
+      .then(data => setProfiloUtente(data))
+      .catch(err => console.log("Errore caricamento profilo:", err));
+  }, []);
 
   if (!profiloUtente) {
     return null;
@@ -15,9 +24,7 @@ const ProfileSidebar = () => {
 
   return (
     <div className="profile-sidebar mt-3">
-      {/* Card Profilo Principale */}
       <Card className="mb-3 border-0 rounded-3 overflow-hidden">
-        {/* Background header */}
         <div
           style={{
             height: '60px',
@@ -26,7 +33,6 @@ const ProfileSidebar = () => {
           }}
         />
 
-        {/* Immagine profilo centrata */}
         <div className="text-center" style={{ marginTop: '-40px' }}>
           <Image
             src={profiloUtente.image}
@@ -47,6 +53,7 @@ const ProfileSidebar = () => {
           <Card.Text className="sidebar-link text-muted small mb-2">
             {profiloUtente.title}
           </Card.Text>
+
           {profiloUtente.area && (
             <Card.Text className="sidebar-link text-muted small mb-3">
               {profiloUtente.area}
