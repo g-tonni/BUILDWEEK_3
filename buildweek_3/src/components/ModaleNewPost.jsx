@@ -2,10 +2,19 @@ import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useSelector } from "react-redux";
 
 const ModaleNewPost = function (props) {
 
-    const url = "https://striveschool-api.herokuapp.com/api/posts/"
+    const postID = useSelector((currentState) => {
+        return currentState.articoli.postId
+    })
+
+
+
+
+
+    let url = "https://striveschool-api.herokuapp.com/api/posts/"
 
     // const [newPost, setNewPosts] = useState("")
     const [formPost, setFormPost] = useState({
@@ -17,8 +26,16 @@ const ModaleNewPost = function (props) {
         let method
         let finalURL
 
-        fetch(url, {
-            method: "POST",
+        if (postID !== '') {
+            method = 'PUT'
+            finalURL = url + postID
+        } else {
+            method = 'POST'
+            finalURL = url
+        }
+
+        fetch(finalURL, {
+            method: method,
             headers: {
                 'Content-Type': 'application/json',
                 Authorization:
