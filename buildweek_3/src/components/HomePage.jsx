@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import AddsNewPosts from "./AddsNewPost"
 import ModaleNewPost from "./ModaleNewPost"
 
+import RightHome from "./RightHome"
 
 const HomePage = function () {
 
@@ -72,7 +73,7 @@ const HomePage = function () {
                         openModal={openModal}
                         userPosts={userPosts} />
                 </Col>
-                <Col xs={12} md={8} lg={3} ><p>DESTRA</p></Col>
+                <Col xs={12} md={8} lg={3} ><RightHome /></Col>
 
             </Row>
 
