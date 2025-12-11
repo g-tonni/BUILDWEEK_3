@@ -40,14 +40,14 @@ const ProfileSidebar = () => {
         </div>
 
         <Card.Body className="text-center pt-2">
-          <Card.Title className="mb-1 fs-6 fw-semibold">
+          <Card.Title className="sidebar-link mb-1 fs-6 fw-semibold">
             {profiloUtente.name} {profiloUtente.surname}
           </Card.Title>
-          <Card.Text className="text-muted small mb-2">
+          <Card.Text className="sidebar-link text-muted small mb-2">
             {profiloUtente.title}
           </Card.Text>
           {profiloUtente.area && (
-            <Card.Text className="text-muted small mb-3">
+            <Card.Text className="sidebar-link text-muted small mb-3">
               {profiloUtente.area}
             </Card.Text>
           )}
@@ -58,39 +58,36 @@ const ProfileSidebar = () => {
         {/* Sezione statistiche */}
         <Card.Body className="py-2">
           <div className="d-flex justify-content-between align-items-center mb-2">
-            <span className="text-muted small">Visitatori del profilo</span>
-            <span className="text-primary fw-semibold small">127</span>
+            <span className="sidebar-link text-muted small">Visitatori del profilo</span>
+            <span className="sidebar-link text-primary fw-semibold small">127</span>
           </div>
           <div className="d-flex justify-content-between align-items-center">
-            <span className="text-muted small">Impression del post</span>
-            <span className="text-primary fw-semibold small">2.345</span>
+            <span className="sidebar-link text-muted small">Impression del post</span>
+            <span className="sidebar-link text-primary fw-semibold small">2.345</span>
           </div>
         </Card.Body>
 
+
+
         <hr className="my-0" />
 
-        {/* Accesso esclusivo */}
+        {/* Accesso esclusivo ed Elementi salvati */}
         <Card.Body className="py-3">
-          <div className="d-flex align-items-start">
+          <div className="d-flex align-items-start mb-3">
             <BsBookmarkFill className="text-secondary me-2 mt-1" size={16} />
             <div>
-              <p className="mb-1 small text-muted">
+              <p className="sidebar-link mb-1 small text-muted">
                 Accedi a strumenti e informazioni in esclusiva
               </p>
-              <p className="mb-0 small fw-semibold">
-                <span className="text-warning">⭐</span> Prova Premium gratis
+              <p className="sidebar-link mb-0 small fw-semibold">
+                <span className="sidebar-link text-warning">⭐</span> Prova Premium gratis
               </p>
             </div>
           </div>
-        </Card.Body>
-
-        <hr className="my-0" />
-
-        {/* Elementi salvati */}
-        <Card.Body className="py-2">
+          <hr className="my-2" />
           <div className="d-flex align-items-center">
             <BsBookmarkFill className="text-secondary me-2" size={14} />
-            <span className="small fw-semibold">I miei elementi</span>
+            <span className="sidebar-link small fw-semibold">I miei elementi</span>
           </div>
         </Card.Body>
       </Card>
@@ -99,9 +96,9 @@ const ProfileSidebar = () => {
       <Card className="mb-3 border-0 rounded-3">
         <Card.Body className="py-3">
           <div className="mb-3">
-            <p className="small text-primary fw-semibold mb-2">Gruppi</p>
-            <p className="small text-muted mb-2">Eventi</p>
-            <p className="small text-muted mb-0">Hashtag seguiti</p>
+            <p className="sidebar-link small text-primary fw-semibold mb-2">Gruppi</p>
+            <p className="sidebar-link small text-muted mb-2">Eventi</p>
+            <p className="sidebar-link small text-muted mb-0">Hashtag seguiti</p>
           </div>
           <hr className="my-2" />
           <p className="small text-center text-muted fw-semibold mb-0">
@@ -114,24 +111,24 @@ const ProfileSidebar = () => {
       <Card className="mb-3 border-0 rounded-3">
         <Card.Body className="py-3">
           <div className="d-flex align-items-center justify-content-between mb-2">
-            <p className="small fw-semibold mb-0">I miei contenuti</p>
+            <p className="sidebar-link small fw-semibold mb-0">I miei contenuti</p>
             <BsBookmarkFill className="text-secondary" size={14} />
           </div>
-          <p className="small text-muted mb-2">Articoli salvati: 12</p>
-          <p className="small text-muted mb-0">Post salvati: 8</p>
+          <p className="sidebar-link small text-muted mb-2">Articoli salvati: 12</p>
+          <p className="sidebar-link small text-muted mb-0">Post salvati: 8</p>
         </Card.Body>
       </Card>
 
       {/* Card 4 - Risorse */}
       <Card className="mb-3 border-0 rounded-3">
         <Card.Body className="py-3">
-          <p className="small fw-semibold mb-3">Risorse utili</p>
+          <p className="sidebar-link small fw-semibold mb-3">Risorse utili</p>
           <ListGroup variant="flush">
-            <ListGroup.Item className="px-0 py-2 border-0 small text-muted d-flex align-items-center">
+            <ListGroup.Item className="sidebar-link px-0 py-2 border-0 small text-muted d-flex align-items-center">
               <FaEye className="me-2 text-secondary" size={16} />
               Modalità creatore di contenuti
             </ListGroup.Item>
-            <ListGroup.Item className="px-0 py-2 border-0 small text-muted d-flex align-items-center">
+            <ListGroup.Item className="sidebar-link px-0 py-2 border-0 small text-muted d-flex align-items-center">
               <BsBookmarkFill className="me-2 text-secondary" size={14} />
               La mia rete
             </ListGroup.Item>
