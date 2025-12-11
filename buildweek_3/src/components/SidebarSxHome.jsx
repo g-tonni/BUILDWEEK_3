@@ -80,7 +80,7 @@ const ProfileSidebar = () => {
                 Accedi a strumenti e informazioni in esclusiva
               </p>
               <p className="sidebar-link mb-0 small fw-semibold">
-                <span className="sidebar-link text-warning">⭐</span> Prova Premium gratis
+                Prova Premium gratis
               </p>
             </div>
           </div>
