@@ -8,7 +8,7 @@ import Interessi from './Interessi'
 import Formazione from './Formazione'
 import Esperienza from './Esperienza'
 import ConsigliatiCarousel from './ConsigliatiCarousel'
-
+import Footer from './Footer'
 
 
 const Profile = function (props) {
@@ -33,6 +33,7 @@ const Profile = function (props) {
           <Sidebar />
         </Col>
       </Row>
+         <Footer />
     </Container>
   )
 }
