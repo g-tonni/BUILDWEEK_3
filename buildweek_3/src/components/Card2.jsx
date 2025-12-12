@@ -8,7 +8,7 @@ function ProfileRecommendationss() {
           className="h-100 p-3 bg-white border"
           style={{ backgroundColor: '#f5f5f5', color: '#333' }}
         >
-          <Card.Body>
+          <Card.Body >
 
             <Card.Title>
               Aggiungi una foto al tuo profilo per aiutare gli altri a
