@@ -12,13 +12,31 @@ import {
 } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useState, useEffect } from "react"; 
 const NavBarL = () => {
   const navigate = useNavigate();
 
   const handleHomeClick = () => {
     navigate("/");
   };
+
+  
+    const [profiloUtente, setProfiloUtente] = useState(null);
+  
+    useEffect(() => {
+      fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+        headers: {
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
+        }
+      })
+        .then(res => res.json())
+        .then(data => setProfiloUtente(data))
+        .catch(err => console.log("Errore caricamento profilo:", err));
+    }, []);
+  
+    if (!profiloUtente) {
+      return null;
+    }
 
   return (
     <nav className="navbar navbar-expand bg-white border-bottom shadow-sm fixed-top">
@@ -101,7 +119,7 @@ const NavBarL = () => {
                 className="nav-link d-flex flex-row align-items-center text-decoration-none p-0">
                 <Link to="/profile/me">
                   <img
-                    src="https://placebear.com/50/50" //{profile.image}
+                    src={profiloUtente.image} //{profile.image}
                     alt="profile"
                     className="rounded-circle me-2"
                     style={{ width: "30px", height: "30px" }}

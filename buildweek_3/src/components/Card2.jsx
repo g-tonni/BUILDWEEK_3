@@ -8,7 +8,7 @@ function ProfileRecommendationss() {
           className="h-100 p-3 bg-white border"
           style={{ backgroundColor: '#f5f5f5', color: '#333' }}
         >
-          <Card.Body>
+          <Card.Body >
 
             <Card.Title className="d-flex align-items-center">
               <div className="me-2">
