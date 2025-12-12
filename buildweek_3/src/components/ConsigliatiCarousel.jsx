@@ -11,30 +11,30 @@ function ConsigliatiCarousel() {
 
   return (
     <Container className={"bg-white border rounded-3" + (params.id === "me" ? "" : " d-none")}>
-      <Row>
+      <Row className='h-100'>
         <Col xs={12} className="m-3 ">
           <h4>Consigliato per te</h4>
           <div className="d-flex align-items-center">
             <IoEye className="fs-5 text-secondary me-2" /> <span className="fs-6 text-secondary" > Solo per te</span>
           </div>
         </Col>
-        <Col xs={12} >
+        <Col xs={12} className='h-100'>
 
           <Carousel indicators={false} controls={true} className="my-3">
             <Carousel.Item>
-              <Row>
-                <Col xs={6}>
+              <Row className='h-100'>
+                <Col xs={6} className='h-100'>
                   <ProfileRecommendations />
                 </Col>
 
-                <Col xs={6}>
+                <Col xs={6} className='h-100'>
                   <ProfileRecommendationss />
                 </Col>
               </Row>
             </Carousel.Item>
             <Carousel.Item>
-              <Row>
-                <Col xs={6}>
+              <Row className='h-100'>
+                <Col xs={6} className='h-100'>
                   <ProfileRecommendations3 />
                 </Col>
               </Row>

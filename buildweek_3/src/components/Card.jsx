@@ -2,7 +2,7 @@ import { Card, Button, Row, Col } from 'react-bootstrap'
 
 function ProfileRecommendations() {
   return (
-    <Row className="g-3">
+    <Row className="h-100">
       <Col md={12}>
         <Card className="h-100 p-3 bg-white border" style={{ color: '#333' }}>
           <Card.Body>
