@@ -55,7 +55,7 @@ const HeroSection = function (props) {
                                         dispatch(newImg("profileImage"))
                                         props.openModal(true)
                                     }}
-                                    className="position-absolute bottom-0 end-0 bg-white rounded-circle p-1 border border-1 border-primary text-primary"
+                                    className={"position-absolute bottom-0 end-0 bg-white rounded-circle p-1 border border-1 border-primary text-primary" + (params.id === "me" ? "" : " d-none")}
                                     size={24}
                                 />
                             </div>

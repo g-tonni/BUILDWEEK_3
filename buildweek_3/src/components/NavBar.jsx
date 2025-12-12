@@ -12,33 +12,33 @@ import {
 } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 const NavBarL = () => {
   const navigate = useNavigate();
 
   const handleHomeClick = () => {
     navigate("/");
   };
- const handleJobsClick = () => {
+  const handleJobsClick = () => {
     navigate("/Jobs");
   };
-  
-    const [profiloUtente, setProfiloUtente] = useState(null);
-  
-    useEffect(() => {
-      fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
-        headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
-        }
-      })
-        .then(res => res.json())
-        .then(data => setProfiloUtente(data))
-        .catch(err => console.log("Errore caricamento profilo:", err));
-    }, []);
-  
-    if (!profiloUtente) {
-      return null;
-    }
+
+  const [profiloUtente, setProfiloUtente] = useState(null);
+
+  useEffect(() => {
+    fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTM4M2Q1YjYwMWIzODAwMTU0Nzk1NzIiLCJpYXQiOjE3NjUyOTM0MDMsImV4cCI6MTc2NjUwMzAwM30.gvIHt1f99YwL5uN0bIJSuEL3vle2nXwlLPeXm0bNUzQ',
+      }
+    })
+      .then(res => res.json())
+      .then(data => setProfiloUtente(data))
+      .catch(err => console.log("Errore caricamento profilo:", err));
+  }, []);
+
+  if (!profiloUtente) {
+    return null;
+  }
 
   return (
     <nav className="navbar navbar-expand bg-white border-bottom shadow-sm fixed-top">
@@ -72,7 +72,7 @@ const NavBarL = () => {
               className="nav-link d-flex flex-column align-items-center"
               onClick={handleHomeClick}>
               <FaHome size={20} />
-              <div className="small">Home</div>
+              <div className="small d-none d-lg-block">Home</div>
             </a>
           </li>
 
@@ -81,7 +81,7 @@ const NavBarL = () => {
             style={{ cursor: "pointer" }}>
             <a className="nav-link d-flex flex-column align-items-center">
               <FaUserFriends size={20} />
-              <div className="small">My Network</div>
+              <div className="small d-none d-lg-block">My Network</div>
             </a>
           </li>
 
@@ -90,7 +90,7 @@ const NavBarL = () => {
             style={{ cursor: "pointer" }}>
             <a onClick={handleJobsClick} className="nav-link d-flex flex-column align-items-center">
               <FaBriefcase size={20} />
-              <div className="small" onClick={handleJobsClick}>Jobs</div>
+              <div className="small d-none d-lg-block" onClick={handleJobsClick}>Jobs</div>
             </a>
           </li>
 
@@ -99,7 +99,7 @@ const NavBarL = () => {
             style={{ cursor: "pointer" }}>
             <a className="nav-link d-flex flex-column align-items-center">
               <FaRegCommentDots size={20} />
-              <div className="small">Messaging</div>
+              <div className="small d-none d-lg-block">Messaging</div>
             </a>
           </li>
 
@@ -108,25 +108,26 @@ const NavBarL = () => {
             style={{ cursor: "pointer" }}>
             <a className="nav-link d-flex flex-column align-items-center">
               <FaBell size={20} />
-              <div className="small">Notifications</div>
+              <div className="small d-none d-lg-block">Notifications</div>
             </a>
           </li>
 
           {/* Profile Dropdown */}
-          <li className="nav-item d-flex flex-column align-items-center hover-icon">
+          <li className="nav-item d-flex align-items-center hover-icon">
+            <Link to="/profile/me">
+              <img
+                src={profiloUtente.image} //{profile.image}
+                alt="profile"
+                className="rounded-circle me-2"
+                style={{ width: "30px", height: "30px" }}
+              />
+            </Link>
             <Dropdown align="end">
               <Dropdown.Toggle
                 variant="link"
                 id="profileDropdown"
                 className="nav-link d-flex flex-row align-items-center text-decoration-none p-0">
-                <Link to="/profile/me">
-                  <img
-                    src={profiloUtente.image} //{profile.image}
-                    alt="profile"
-                    className="rounded-circle me-2"
-                    style={{ width: "30px", height: "30px" }}
-                  />
-                </Link>
+
                 <div className="small text-dark">Tu</div>
               </Dropdown.Toggle>
 

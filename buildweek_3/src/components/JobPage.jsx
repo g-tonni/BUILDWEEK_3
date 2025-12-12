@@ -10,15 +10,24 @@ const JobP = function () {
   return (
     <Container>
       <Row>
-        <Col xs={12} md={4}>
-     <ProfileSidebar/>
-     <MiniFoot/>
+        <Col xs={12} md={4} className="h-50">
+          <ProfileSidebar />
+          <div className="d-none d-lg-block">
+            <MiniFoot />
+          </div>
+
+
         </Col>
 
+
         <Col xs={12} md={8} className="mt-3">
-        <JobsCategory/>
-        <GetJobs/>
+          <JobsCategory />
+          <GetJobs />
+          <div className="d-lg-none">
+            <MiniFoot />
+          </div>
         </Col>
+
       </Row>
     </Container>
   )

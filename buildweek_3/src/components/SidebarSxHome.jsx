@@ -23,7 +23,7 @@ const ProfileSidebar = () => {
   }
 
   return (
-    <div className="profile-sidebar mt-3">
+    <div className="profile-sidebar mt-3 ">
       <Card className="mb-3 border-0 rounded-3 overflow-hidden">
         <div
           style={{

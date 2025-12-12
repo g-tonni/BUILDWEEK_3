@@ -16,6 +16,7 @@ const Attivita = () => {
   })
 
   const getPostAttività = () => {
+    let id = params.id === "me" ? profiloUtente : params.id
     fetch(url, {
       headers: {
         Authorization:
@@ -33,7 +34,7 @@ const Attivita = () => {
 
       })
       .then((arrayOfPosts) => {
-        setUserPosts(arrayOfPosts.filter((post) => post.user._id === profiloUtente).reverse())
+        setUserPosts(arrayOfPosts.filter((post) => post.user._id === id).reverse())
         console.log("I MIEI POST", arrayOfPosts.filter((post) => post.user._id === profiloUtente))
       })
       .catch((err) => {
@@ -44,7 +45,8 @@ const Attivita = () => {
 
   useEffect(() => {
     getPostAttività()
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.id])
 
 
   return (
@@ -73,7 +75,7 @@ const Attivita = () => {
                 // carosello
 
                 <Carousel.Item key={post._id}>
-                  <Col xs={12} >
+                  <Col xs={12} className="text-center" >
                     <div className="text-start ps-4">
                       <h3>{post.username}</h3>
                       <p>{post.text}</p>

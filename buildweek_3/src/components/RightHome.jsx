@@ -15,7 +15,7 @@ const RightHome = function () {
             </div>
 
             <p className="text-secondary ms-4 mb-0 fw-semibold">
-              Storie pricnipali
+              Storie principali
             </p>
           </Col>
         </Row>

@@ -134,7 +134,7 @@ const HPColonnaPost = function ({ userPosts, openModal1, aggiornaDopoLaPost, ope
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={12} className={"my-3" + (post.image ? "" : " d-none")}>
+                                    <Col xs={12} className={"my-3 text-center" + (post.image ? "" : " d-none")}>
                                         <img src={post.image} className="img-fluid" />
                                     </Col>
 

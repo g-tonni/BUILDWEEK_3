@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaPlus, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import "../css/Formazione.css"
 import { useParams } from "react-router-dom";
 
@@ -25,6 +25,7 @@ const Formazione = () => {
   // Carica dati da localStorage all'avvio
   useEffect(() => {
     const saved = localStorage.getItem("formazioni");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (saved) setFormazioni(JSON.parse(saved));
   }, []);
 

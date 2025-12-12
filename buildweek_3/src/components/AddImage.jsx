@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addExpId, newImg } from "../redux/action/addIMGAction";
+import { useSelector } from "react-redux";
+
 
 
 const AddImage = function () {
 
-    // const experienceURL = " https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId/picture"
-    // 
-    const dispatch = useDispatch()
+
     const getFinalUrl = useSelector((currState) => {
         return currState.image.fetchUrl
 
@@ -74,23 +72,38 @@ const AddImage = function () {
 
     return (
         <form onSubmit={handleSubmit}
-
+            className="d-flex flex-column align-items-center"
         >
             <input
+                id="fileInput"
+                className="d-none"
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
             />
 
+            <label
+                htmlFor="fileInput"
+                className="btn btn-outline-primary"
+                style={{
+
+                    cursor: "pointer"
+                }}
+            >Scegli un file</label>
+
             {image && (
                 <img
                     src={URL.createObjectURL(image)}
                     alt="preview"
+                    className="my-3"
+
                     style={{ width: "200px", marginTop: "10px" }}
                 />
             )}
 
-            <button type="submit">Carica</button>
+            <button
+                className="btn btn-success my-3"
+                type="submit">Carica</button>
         </form>
     );
 }

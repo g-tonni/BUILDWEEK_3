@@ -4,16 +4,16 @@ import { useEffect, useState } from 'react'
 
 const GetJobs = () => {
   const [lavori, setLavori] = useState([])
-  
+
   const [error, setError] = useState(null)
 
-const handleClick = (url) => {
-    window.open(url); 
+  const handleClick = (url) => {
+    window.open(url);
   }
 
   useEffect(() => {
-    
-    
+
+
     fetch(`https://strive-benchmark.herokuapp.com/api/jobs?company=All`)
       .then((res) => {
         if (!res.ok) {
@@ -24,25 +24,25 @@ const handleClick = (url) => {
       .then((data) => {
         console.log('lavoro', data)
         setLavori(data.data || [])
-       
+
       })
       .catch((err) => {
         console.error('errore', err)
         setError(err.message)
-        
+
       })
   }, [])
 
   return (
     <ul className="list-group list-unstyled">
-         <li><h3 className="list-group-item d-flex justify-content-between align-items-start">Altre offerte di lavoro per te</h3></li>
+      <li><h3 className="list-group-item d-flex justify-content-between align-items-start m-0 py-3">Altre offerte di lavoro per te</h3></li>
       {lavori.map((item, index) => (
-        
+
         <li
           key={item.id || index}
           className="list-group-item d-flex justify-content-between align-items-start"
         >
-          <div style={{cursor:"pointer"}} onClick={() => handleClick(item.url)}>
+          <div style={{ cursor: "pointer" }} onClick={() => handleClick(item.url)}>
             <strong className="fs-5 text-primary ">{item.title}</strong> -{' '}
             {item.category}
             <br />

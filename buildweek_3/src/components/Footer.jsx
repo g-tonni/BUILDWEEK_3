@@ -6,7 +6,7 @@ import { MdOutlineSecurity } from 'react-icons/md'
 const Footer = function () {
   return (
     <Container>
-      <Row className="py-4">
+      <Row className="py-4 mt-4">
         <Col xs={12} md={2}>
           <a
             href="#"
