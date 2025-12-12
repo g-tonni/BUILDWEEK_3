@@ -123,7 +123,7 @@ const Formazione = () => {
       </div>
 
       {/* Lista formazioni */}
-      <ul className="list-group">
+      <ul className={"list-group" + (params.id === "me" ? "" : "  d-none")}>
         {formazioni.map((item, index) => (
           <li
             key={index}
