@@ -19,7 +19,9 @@ const NavBarL = () => {
   const handleHomeClick = () => {
     navigate("/");
   };
-
+ const handleJobsClick = () => {
+    navigate("/Jobs");
+  };
   
     const [profiloUtente, setProfiloUtente] = useState(null);
   
@@ -86,9 +88,9 @@ const NavBarL = () => {
           <li
             className="nav-item d-flex flex-column align-items-center hover-icon"
             style={{ cursor: "pointer" }}>
-            <a className="nav-link d-flex flex-column align-items-center">
+            <a onClick={handleJobsClick} className="nav-link d-flex flex-column align-items-center">
               <FaBriefcase size={20} />
-              <div className="small">Jobs</div>
+              <div className="small" onClick={handleJobsClick}>Jobs</div>
             </a>
           </li>
 

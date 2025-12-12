@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import HomePage from "./components/HomePage"
 import ModaleImmagine from "./components/ModaleImmagine"
 import { useState } from "react"
+import JobP from './components/JobPage'
 
 function App() {
   const [modalShow, setModalShow] = useState(false)
@@ -26,9 +27,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage openModal={openModal} />} />
 
+          <Route path='/jobs' element={<JobP />} />
           <Route path="/profile/:id" element={<Profile openModal={openModal} />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </Provider>
   )
