@@ -1,6 +1,7 @@
 export const GET_PERSONAL_PROFILE = 'GET_PERSONAL_PROFILE'
 export const GET_PROFILES = 'GET_PROFILES'
 
+
 export const personalProfile = function (_payload) {
   return {
     type: GET_PERSONAL_PROFILE,

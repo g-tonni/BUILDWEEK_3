@@ -12,6 +12,8 @@ import { useState } from "react"
 function App() {
   const [modalShow, setModalShow] = useState(false)
 
+
+
   const openModal = (value) => {
     setModalShow(value)
   }
@@ -22,7 +24,7 @@ function App() {
         <ModaleImmagine show={modalShow}
           onHide={() => setModalShow(false)} />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage openModal={openModal} />} />
 
           <Route path="/profile/:id" element={<Profile openModal={openModal} />} />
         </Routes>

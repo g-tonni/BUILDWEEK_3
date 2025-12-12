@@ -83,19 +83,7 @@ const Formazione = () => {
           <h4>Formazione</h4>
         </div>
         <div
-          /*style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "5px",
-            padding: "6px 12px",
-            color: "black",
-            borderRadius: "4px",
-            fontWeight: "500",
-            textDecoration: "none",
-            transition: "transform 0.2s, background-color 0.2s",
-            cursor: "pointer",
 
-          }}} */
           className={"text-decoration-none " + (params.id === "me" ? "d-flex align-items-center" : "d-none")}>
           <a
             href="#"
@@ -118,7 +106,7 @@ const Formazione = () => {
 
             <i class="bi bi-plus" style={{ fontSize: "32px" }}></i>
           </a>
-          <i className="bi bi-pen"></i>
+
         </div>
       </div>
 

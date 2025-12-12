@@ -23,7 +23,7 @@ const Profile = function (props) {
           <ConsigliatiCarousel />
           <Analisi />
           <Attivita />
-          <Esperienza />
+          <Esperienza openModal={props.openModal} />
           <Formazione />
           <Competenze />
           <Interessi />

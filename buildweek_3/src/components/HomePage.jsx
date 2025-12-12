@@ -7,13 +7,15 @@ import ModaleNewPost from "./ModaleNewPost"
 
 import RightHome from "./RightHome"
 
-const HomePage = function () {
+const HomePage = function (props) {
 
     const [modalShow, setModalShow] = useState(false);
-    const openModal = (value) => {
+    const openModal1 = (value) => {
         setModalShow(value)
 
     }
+
+
 
     const aggiornaDopoLaPost = () => {
         getPostHomePage()
@@ -42,7 +44,7 @@ const HomePage = function () {
 
             })
             .then((arrayOfPosts) => {
-                setUserPosts(arrayOfPosts.slice(arrayOfPosts.length - 15, arrayOfPosts.length))
+                setUserPosts(arrayOfPosts.slice(arrayOfPosts.length - 15, arrayOfPosts.length).reverse())
                 console.log(arrayOfPosts)
             })
             .catch((err) => {
@@ -56,7 +58,7 @@ const HomePage = function () {
     }, [])
 
 
-    
+
     return (
 
         <Container>
@@ -65,17 +67,19 @@ const HomePage = function () {
                     <ProfileSidebar />
                 </Col>
                 <Col xs={12} md={8} lg={7}>
-                    <AddsNewPosts openModal={openModal} />
+                    <AddsNewPosts openModal1={openModal1} />
 
                     <ModaleNewPost show={modalShow}
                         aggiornaDopoLaPost={aggiornaDopoLaPost}
-                        openModal={openModal}
+                        openModal1={openModal1}
                         onHide={() => setModalShow(false)} />
 
                     <HPColonnaPost
                         aggiornaDopoLaPost={aggiornaDopoLaPost}
-                        openModal={openModal}
-                        userPosts={userPosts} />
+                        openModal1={openModal1}
+                        userPosts={userPosts}
+                        openModal={props.openModal} />
+
                 </Col>
                 <Col xs={12} md={8} lg={3} ><RightHome /></Col>
 

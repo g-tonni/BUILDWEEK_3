@@ -1,8 +1,27 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addExpId, newImg } from "../redux/action/addIMGAction";
 
 
 const AddImage = function () {
 
+    // const experienceURL = " https://striveschool-api.herokuapp.com/api/profile/:userId/experiences/:expId/picture"
+    // 
+    const dispatch = useDispatch()
+    const getFinalUrl = useSelector((currState) => {
+        return currState.image.fetchUrl
+
+    })
+
+    const idExp = useSelector((currState) => {
+        return currState.image.expID
+
+    })
+
+    const postId = useSelector((currState) => {
+        return currState.image.postId
+
+    })
     const [image, setImage] = useState(null);
 
     function handleImageChange(e) {
@@ -11,12 +30,27 @@ const AddImage = function () {
     }
 
     function handleSubmit(e) {
-        e.preventDefault();
+        let url
+
+
 
         const formData = new FormData();
-        formData.append("profile", image);
+        ;
+        e.preventDefault();
+        if (getFinalUrl === "profileImage") {
+            formData.append("profile", image)
+            url = "https://striveschool-api.herokuapp.com/api/profile/69383d5b601b380015479572/picture"
+        } else if (getFinalUrl === "expImage") {
+            formData.append("experience", image)
+            url = `https://striveschool-api.herokuapp.com/api/profile/69383d5b601b380015479572/experiences/${idExp}/picture`
+        } else {
+            formData.append("post", image)
+            url = `https://striveschool-api.herokuapp.com/api/posts/${postId} `
+        }
 
-        fetch("https://striveschool-api.herokuapp.com/api/profile/69383d5b601b380015479572/picture", {
+
+
+        fetch(url, {
             method: "POST",
             headers: {
 
@@ -39,7 +73,9 @@ const AddImage = function () {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}
+
+        >
             <input
                 type="file"
                 accept="image/*"

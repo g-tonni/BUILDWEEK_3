@@ -21,7 +21,7 @@ const AddsNewPosts = function (props) {
                         <div className="flex-grow-1">
                             <Button variant="light"
                                 className="text-start rounded-pill w-100"
-                                onClick={() => props.openModal(true)}>Crea un post</Button>
+                                onClick={() => props.openModal1(true)}>Crea un post</Button>
                         </div>
 
 

@@ -56,7 +56,7 @@ const ModaleNewPost = function (props) {
                 if (res.ok) {
                     alert("post pubblicato")
                     props.aggiornaDopoLaPost()
-                    props.openModal(false)
+                    props.openModal1(false)
                 } else {
                     throw new Error("errore")
                 }

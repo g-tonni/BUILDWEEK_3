@@ -11,9 +11,11 @@ import { BsFillSendFill } from "react-icons/bs"
 import { useDispatch, useSelector } from 'react-redux'
 import { addNewPost, cambiaContenuto } from "../redux/action/homePageActions"
 import { Link } from "react-router-dom"
+import { addPostId, newImg } from "../redux/action/addIMGAction"
+import { FaImage } from "react-icons/fa"
 
 
-const HPColonnaPost = function ({ userPosts, openModal, aggiornaDopoLaPost }) {
+const HPColonnaPost = function ({ userPosts, openModal1, aggiornaDopoLaPost, openModal }) {
 
     const profiloUtente = useSelector((currState) => {
         return currState.profiles.ilMioID
@@ -87,12 +89,22 @@ const HPColonnaPost = function ({ userPosts, openModal, aggiornaDopoLaPost }) {
                                                         <Dropdown.Item className="d-flex mb-2 fw-medium align-items-center" href="#/action-2">  <PiTagChevronBold className="fs-4 me-2" /> Salva</Dropdown.Item>
                                                         <Dropdown.Item className="d-flex mb-2 fw-medium align-items-center" href="#/action-3"><FaLink className="fs-4 me-2" /> Copia link al post</Dropdown.Item>
                                                         <Dropdown.Item className="d-flex mb-2 fw-medium align-items-center" href="#/action-1"><PiCodeBold className="fs-4 me-2" /> Incorpora questo post</Dropdown.Item>
+                                                        <Dropdown.Item
+                                                            onClick={() => {
+                                                                dispatch(newImg("postImage"))
+                                                                dispatch(addPostId(post._id))
+                                                                openModal(true)
+                                                            }}
+                                                            className="d-flex mb-2 fw-medium align-items-center" href="#/action-1">  <FaImage className="fs-4 me-2" /> Aggiungi una foto al post</Dropdown.Item>
+
+
+
                                                         <Dropdown.Item className="d-flex mb-2 fw-medium align-items-center"
                                                             href="#/action-2"
                                                             onClick={() => {
                                                                 dispatch(addNewPost(post._id))
                                                                 dispatch(cambiaContenuto(post.text))
-                                                                openModal(true)
+                                                                openModal1(true)
                                                             }}><FiEdit2 className="fs-4 me-2" /> Modifica post</Dropdown.Item>
                                                         <Dropdown.Item
                                                             onClick={() => {
@@ -110,6 +122,7 @@ const HPColonnaPost = function ({ userPosts, openModal, aggiornaDopoLaPost }) {
 
 
                                     </Col>
+
                                 </Row>
                                 <Row>
                                     <Col>
@@ -121,6 +134,9 @@ const HPColonnaPost = function ({ userPosts, openModal, aggiornaDopoLaPost }) {
                                     </Col>
                                 </Row>
                                 <Row>
+                                    <Col xs={12} className={"my-3" + (post.image ? "" : " d-none")}>
+                                        <img src={post.image} className="img-fluid" />
+                                    </Col>
 
                                     <Col className="text-center py-3 d-flex justify-content-around">
                                         <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><AiOutlineLike className="fs-4 me-2" /> Consiglia</Button>

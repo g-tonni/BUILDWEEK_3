@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { FaTimes } from 'react-icons/fa'
 import { useParams } from "react-router-dom"
+import { FaImage } from "react-icons/fa"
+import { addExpId, newImg } from "../redux/action/addIMGAction"
 
-const Esperienza = () => {
+const Esperienza = (props) => {
   const [showModal, setShowModal] = useState(false)
   const [esperienze, setEsperienze] = useState([])
   const [formData, setFormData] = useState({
@@ -34,7 +36,7 @@ const Esperienza = () => {
   }
 
   const params = useParams()
-
+  const dispatch = useDispatch()
 
   const PersonalId = useSelector((currentState) => {
     return currentState.profiles.profiloUtente?._id
@@ -176,6 +178,7 @@ const Esperienza = () => {
                     (e.currentTarget.style.transform = 'scale(1)')
                   }
                 >
+
                   <i className={"bi bi-plus text-dark " + (params.id === "me" ? "d-flex" : "d-none")} style={{ fontSize: '32px' }}></i>
                 </a>
 
@@ -189,19 +192,31 @@ const Esperienza = () => {
                   key={index}
                   className="list-group-item d-flex justify-content-between align-items-start"
                 >
-                  <div>
-                    <strong className="fs-5">{item.role}</strong> -{' '}
-                    {item.company} <br />
-                    Inizio: {new Date(item.startDate).toLocaleDateString()}{' '}
-                    <br />
-                    Fine: {new Date(item.endDate).toLocaleDateString()}
-                    <br />
-                    {item.description && <small>{item.description}</small>}
-                    {item.area && <small>{item.area}</small>}
+                  <div className="d-flex">
+                    <div className={(item.image ? "d-flex me-3" : "d-none")} style={{ width: "90px" }}>
+                      <img src={item.image} className="img-fluid h-100 align-items-center  rounded-2" />
+                    </div>
+                    <div>
+
+                      <strong className="fs-5">{item.role}</strong> -{' '}
+                      {item.company} <br />
+                      Inizio: {new Date(item.startDate).toLocaleDateString()}{' '}
+                      <br />
+                      Fine: {new Date(item.endDate).toLocaleDateString()}
+                      <br />
+                      {item.description && <small>{item.description}</small>}
+                      {item.area && <small>{item.area}</small>}
+                    </div>
                   </div>
 
-
                   <div className={" align-items-center " + (params.id === "me" ? "d-flex" : "d-none")}>
+                    <FaImage
+                      onClick={() => {
+                        dispatch(newImg("expImage"))
+                        dispatch(addExpId(item._id))
+                        props.openModal(true)
+                      }}
+                    />
                     <a
                       onClick={(e) => {
                         e.preventDefault()
@@ -217,7 +232,7 @@ const Esperienza = () => {
                         setIdExp(item._id)
                       }}
                     >
-                      <i className="bi bi-pen me-4"></i>
+                      <i className="bi bi-pen mx-4"></i>
                     </a>
                     <FaTimes
                       className="text-danger"
