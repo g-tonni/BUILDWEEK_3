@@ -62,7 +62,7 @@ const HomePage = function (props) {
     return (
 
         <Container>
-            <Row className="justify-content-end mt-3">
+            <Row className="justify-content-center mt-3">
                 <Col xs={12} md={4} lg={2}>
                     <ProfileSidebar />
                 </Col>

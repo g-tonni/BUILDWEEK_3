@@ -138,11 +138,11 @@ const HPColonnaPost = function ({ userPosts, openModal1, aggiornaDopoLaPost, ope
                                         <img src={post.image} className="img-fluid" />
                                     </Col>
 
-                                    <Col className="text-center py-3 d-flex justify-content-around">
-                                        <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><AiOutlineLike className="fs-4 me-2" /> Consiglia</Button>
-                                        <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><FaRegCommentDots className="fs-5 me-2" />  Commenta</Button>
-                                        <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><FaRepeat className="fs-5 me-2" /> Diffondi il post</Button>
-                                        <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><BsFillSendFill className="fs-6 me-2" /> Invia</Button>
+                                    <Col className="text-center my-3 d-flex  justify-content-around">
+                                        <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><AiOutlineLike className="fs-4 me-2" /><span className="d-none d-lg-block"> Consiglia</span></Button>
+                                        <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><FaRegCommentDots className="fs-5 me-2" /><span className="d-none d-lg-block">   Commenta</span></Button>
+                                        <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><FaRepeat className="fs-5 me-2" /><span className="d-none d-lg-block">  Diffondi il post</span></Button>
+                                        <Button variant="outline-light" className="text-dark fw-medium border-0 d-flex align-items-center"><BsFillSendFill className="fs-6 me-2" /> <span className="d-none d-lg-block"> Invia</span></Button>
                                     </Col>
                                 </Row>
                             </Card >
