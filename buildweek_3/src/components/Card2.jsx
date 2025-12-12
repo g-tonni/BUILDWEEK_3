@@ -10,7 +10,10 @@ function ProfileRecommendationss() {
         >
           <Card.Body>
 
-            <Card.Title>
+            <Card.Title className="d-flex align-items-center">
+              <div className="me-2">
+                <img src="/public/fotocamera.jpeg" />
+              </div>
               Aggiungi una foto al tuo profilo per aiutare gli altri a
               riconoscerti
             </Card.Title>

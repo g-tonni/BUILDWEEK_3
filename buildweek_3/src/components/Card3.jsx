@@ -7,7 +7,10 @@ function ProfileRecommendations3() {
         <Card className="h-100 p-3 bg-white border" style={{ color: '#333' }}>
           <Card.Body>
 
-            <Card.Title>
+            <Card.Title className="d-flex align-items-center">
+              <div className="me-2">
+                <img src="/public/casa.jpeg" />
+              </div>
               In quale settore lavori?
             </Card.Title>
             <Card.Text>
